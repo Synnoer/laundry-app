@@ -15,13 +15,18 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+        <div class="min-h-screen bg-white dark:bg-gray-700">
+            
 
             <!-- Page Heading -->
             @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <header class="bg-sky-400 dark:bg-gray-900 shadow" style="background-image: '/image/BG-Gambar.png';">
+                    <div class="container-fluid">
+                        <div>
+                            <img src="/image/Logo.png" alt="" width="50" height="50">
+                        </div>
+                    </div>
+                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">   
                         {{ $header }}
                     </div>
                 </header>
@@ -31,6 +36,13 @@
             <main>
                 {{ $slot }}
             </main>
+
+            
+            <footer>
+                <div class="py-12">
+                    @include('layouts.navigation')
+                </div>
+            </footer>
         </div>
     </body>
 </html>

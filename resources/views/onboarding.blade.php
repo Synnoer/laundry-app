@@ -10,7 +10,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            max-width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             /* Set container height to fill viewport */
         }
 
@@ -24,11 +25,11 @@
 <body>
     <div class="container-fluid">
         <div>
-            <a href=""><img src="/image/Logo.png" alt=""></a>
+            <a href="/login"><img src="/img/ImageOB1.png" alt=""></a>
+
+            <h2>Tidak Perlu Mencuci Sendiri</h2>
+            <p>Dengan All Fresh Laundry. yang ada <br> di handphonemu, tersedia laundry terbaik <br> yang akan mencuci pakaianmu.</p>
         </div>
-    </div>
-    <div class="container-fluid">
-        <img src="/image/byADJ.png" alt="">
     </div>
 
 
