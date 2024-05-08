@@ -10,7 +10,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            max-width: 100%;
             /* Set container height to fill viewport */
         }
 
@@ -24,12 +24,13 @@
 <body>
     <div class="container-fluid">
         <div>
-            <a href=""><img src="/image/Logo.png" alt=""></a>
+            <a href="login"><img src="/image/Logo.png" alt=""></a>
         </div>
     </div>
     <div class="container-fluid">
-        <img src="/image/byADJ.png" alt="">
+        <h1><img src="/image/byADJ.png" alt=""></h1>
     </div>
+
 
 
 </body>

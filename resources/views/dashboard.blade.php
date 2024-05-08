@@ -1,23 +1,19 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="py-12">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"> 
-                <div class="p-6 text-gray-900 dark:text-gray-100 flex items-center mb-4">
-                    <h3 class="text-xl font-bold mr-4">Membership Status</h3>
-                    <div class="bg-white text-black dark:text-black">
-                        <p class="text-black">Started from: May 1, 2024</p>
-                        <p class="text-black">End: (date)</p>
-                    </div>
-                </div>
+
+        {{-- Logo --}}
+        <div class="container-fluid">
+            <div>
+                <img src="/image/Logo.png" alt="" width="50" height="50">
             </div>
         </div>
 
         <!-- Settings Dropdown -->
-        <div class="hidden sm:flex sm:items-center sm:ms-6">
+        <div class="hidden sm:flex sm:items-center sm:ms-6 flex items-center justify-end">
             <x-dropdown align="right" width="48">
                 <x-slot name="trigger">
                     <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                        <div>{{ Auth::user()->name }}</div>
+                        <div>{{ "..." }}</div>
 
                         <div class="ms-1">
                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
@@ -30,6 +26,10 @@
                 <x-slot name="content">
                     <x-dropdown-link :href="route('profile.edit')">
                         {{ __('Profile') }}
+                    </x-dropdown-link>
+
+                    <x-dropdown-link :href="route('profile.edit')">
+                        {{ __('About Us') }}
                     </x-dropdown-link>
 
                     <!-- Authentication -->
@@ -65,6 +65,10 @@
                         {{ __('Profile') }}
                     </x-responsive-nav-link>
 
+                    <x-responsive-nav-link :href="route('profile.edit')">
+                        {{ __('About Us') }}
+                    </x-responsive-nav-link>
+
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -75,6 +79,22 @@
                             {{ __('Log Out') }}
                         </x-responsive-nav-link>
                     </form>
+                </div>
+            </div>
+        </div>
+
+        {{-- Membership Status --}}
+        <div class="py-12">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg"> 
+                <div class="p-6 text-gray-900 dark:text-gray-100 flex items-center mb-4">
+                    <h3 class="text-xl font-bold mr-4">Membership Status</h3>
+                </div>
+                <div class="bg-white text-black dark:text-black sm:rounded-lg" >
+                    <p class="text-black">Started from: (date)</p>
+                    
+                </div>
+                <div class="bg-white text-black dark:text-black sm:rounded-lg flex items-center justify-end">
+                    <p class="text-black">End: (date)</p>
                 </div>
             </div>
         </div>

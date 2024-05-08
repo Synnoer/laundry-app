@@ -25,7 +25,7 @@
 <body>
     <div class="container-fluid">
         <div>
-            <a href="/login"><img src="/img/ImageOB1.png" alt=""></a>
+            <a href="login"><img src="/image/ImageOB1.png" alt=""></a>
 
             <h2>Tidak Perlu Mencuci Sendiri</h2>
             <p>Dengan All Fresh Laundry. yang ada <br> di handphonemu, tersedia laundry terbaik <br> yang akan mencuci pakaianmu.</p>
