@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\DB;
 
 class RegisteredUserController extends Controller
 {
@@ -34,19 +35,32 @@ class RegisteredUserController extends Controller
             'gender' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'phone_number' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // Create the user
         $user = User::create([
             'name' => $request->name,
             'gender' => $request->gender,
             'address' => $request->address,
             'email' => $request->email,
+            'phone_number' => $request->phone_number,
             'password' => Hash::make($request->password),
         ]);
 
+        // Assign the role_id
+        // DB::table('role_user')->insert([
+        //     'role_id' => 2, // Customer role_id
+        //     'user_id' => $user->id,
+        // ]);
+
+        
+
+        // Fire the Registered event
         event(new Registered($user));
 
+        // Login the user
         Auth::login($user);
 
         return redirect(route('dashboard', absolute: false));
