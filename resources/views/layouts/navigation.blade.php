@@ -1,9 +1,9 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-400 border border-black dark:border-black">
+<nav x-data="{ open: false }" class="bg-white dark:bg-gray-200 border border-black dark:border-black">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-        <div class="flex justify-center sm:justify-between h-16">
+        <div class="flex flex-col items-center justify-center sm:flex-row sm:justify-between">
             <!-- Logo/Navigation Links -->
-            <div class="space-x-14">
+            <div class="space-y-4 sm:space-y-0 sm:space-x-14 sm:flex">
                 <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     <div class="nav-item flex justify-center items-center">
                         <img src="/image/Icon-home-blue.png" alt="" width="50" height="50" class="nav-icon">
