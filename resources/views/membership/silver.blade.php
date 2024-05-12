@@ -22,5 +22,5 @@
     <div class="flex justify-center items-center h-full">
         {{-- desc --}}
     </div>
-    <x-primary-button class="primary-button mt-auto">{{ __('Next') }}</x-primary-button>
+    <x-primary-button class="primary-button mt-auto">{{ __('Buy') }}</x-primary-button>
 </x-app-layout>

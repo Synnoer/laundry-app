@@ -9,7 +9,9 @@
             <div class="flex items-center space-x-4">
                 {{-- Notification Button --}}
                 <button class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                    <img src="/image/notification.png" alt="Settings" class="w-12 h-12 fill-current">
+                    <a href="{{ route('notification') }}" >
+                        <img src="/image/notification.png" alt="Settings" class="w-12 h-12 fill-current">
+                    </a>
                     </svg>
                 </button>
 

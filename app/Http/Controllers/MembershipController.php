@@ -13,4 +13,16 @@ class MembershipController extends Controller
     {
         return view('membership/member');
     }
+    public function silver()
+    {
+        return view('membership/silver');
+    }
+    public function gold()
+    {
+        return view('membership/silver');
+    }
+    public function platinum()
+    {
+        return view('membership/silver');
+    }
 }

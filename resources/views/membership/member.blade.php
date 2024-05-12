@@ -22,13 +22,19 @@
     <div class="flex justify-center items-center h-full">
         <div class="flex flex-col justify-center items-center space-y-10">
             <!-- Button 1 -->
-            <button class="px-10 py-2 bg-zinc-400 text-white rounded-md focus:outline-none">Silver</button>
+            <button onclick="window.location='{{ route('membership.silver') }}'" class="px-10 py-2 bg-zinc-400 text-white rounded-md focus:outline-none">
+                Silver
+            </button>
             
             <!-- Button 2 -->
-            <button class="px-10 py-2 bg-amber-300 text-white rounded-md focus:outline-none">Gold</button>
+            <button onclick="window.location='{{ route('membership.gold') }}'" class="px-10 py-2 bg-amber-300 text-white rounded-md focus:outline-none">
+                Gold
+            </button>
             
             <!-- Button 3 -->
-            <button class="px-10 py-2 bg-zinc-700 text-white rounded-md focus:outline-none">Platinum</button>
+            <button onclick="window.location='{{ route('membership.platinum') }}'" class="px-10 py-2 bg-zinc-700 text-white rounded-md focus:outline-none">
+                Platinum
+            </button>
         </div>
     </div>
 </x-app-layout>
