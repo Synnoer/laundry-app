@@ -11,14 +11,14 @@
                     </div>
                 </x-nav-link>
 
-                <x-nav-link href="laundry"> 
+                <x-nav-link :href="route('order.index')"> 
                     <div class="nav-item flex justify-center items-center">
                         <img src="/image/Icon-Laundry-Grey.png" alt="" width="50" height="50" class="nav-icon">
                         <span class="nav-label">{{ __('Laundry') }}</span>
                     </div>
                 </x-nav-link>
 
-                <x-nav-link href="membership">
+                <x-nav-link :href="route('membership.index')">
                     <div class="nav-item flex justify-center items-center">
                         <img src="/image/Icon-Member-Grey.png" alt="" width="50" height="50" class="nav-icon">
                         <span class="nav-label">{{ __('Membership') }}</span>

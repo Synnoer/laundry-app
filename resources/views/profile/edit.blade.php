@@ -10,7 +10,7 @@
             <div class="flex items-center space-x-4">
                 {{-- Notification Button --}}
                 <button class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                    <img src="/image/notification.png" alt="Settings" class="w-6 h-6 fill-current">
+                    <img src="/image/notification.png" alt="Settings" class="w-12 h-12 fill-current">
                     </svg>
                 </button>
 

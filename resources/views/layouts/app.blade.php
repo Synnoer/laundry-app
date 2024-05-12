@@ -34,7 +34,7 @@
             align-items: center; /* Center align items horizontally */
         }
 
-        .primary-button {
+        .next-button {
             width: 90%; /* Set button width to 90% of the viewport width */
             max-width: 20rem; /* Limit button width to 20rem */
         }

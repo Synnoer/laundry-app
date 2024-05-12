@@ -9,17 +9,16 @@ use Illuminate\View\View;
 
 class OrderController extends Controller
 {
-
-     public function review(Request $request): View
+    public function index()
     {
-        return view('profile.view', [
-            'user' => $request->user(),
-        ]);
+        return view('order/laundry');
     }
-
-
-    public function next(Request $request): RedirectResponse
+    public function add()
     {
-        return Redirect::to('/');
+        return view('order/add-laundry');
+    }
+    public function detail()
+    {
+        return view('order/details-laundry');
     }
 }

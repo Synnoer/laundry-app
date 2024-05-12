@@ -3,13 +3,13 @@
         {{-- Logo, Notification Button, and Settings Dropdown --}}
         <div class="flex justify-between items-center">
             <div class="flex items-center">
-                <img src="/image/logo-white.png" alt="Logo" class="w-12 h-12 mr-4">
+                <img src="/image/logo-white.png" alt="Logo" class="w-13 h-12 mr-4">
                 <h2 class="text-2xl font-semibold text-white">All Fresh Laundry</h2>
             </div>
             <div class="flex items-center space-x-4">
                 {{-- Notification Button --}}
                 <button class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                    <img src="/image/notification.png" alt="Settings" class="w-6 h-6 fill-current">
+                    <img src="/image/notification.png" alt="Settings" class="w-12 h-12 fill-current">
                     </svg>
                 </button>
 
@@ -21,8 +21,14 @@
                         </button>
                     </x-slot>
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                        <x-dropdown-link href="route('login')">
+                            {{ __('Sign In') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('register')">
+                            {{ __('Sign Up') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link >
+                            {{ __('Contact') }}
                         </x-dropdown-link>
                         <x-dropdown-link>
                             {{ __('About Us') }}
