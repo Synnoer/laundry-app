@@ -9,23 +9,22 @@
             </button>
         </div>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-zinc-400 shadow sm:rounded-lg">
+            <div class="p-4 sm:p-8 bg-zinc-700 shadow sm:rounded-lg">
                 <div class="max-w-xl">
-                    <h2 class="text-3xl font-bold">Silver Membership</h2>
-                    <p>Rp 30.000/month</p>
+                    <h2 class="font-size: 3rem">Platinum Membership</h1>
+                    <p>Rp. 150.000/month</p>
                 </div>
             </div>
             <div class="bg-white p-6 rounded-lg shadow-lg">
-                <p>1. Membership duration: 2 weeks</p>
-                <p>2. Total weight each session: 3 Kg</p>
-                <p>3. Total sessions: 2</p>
-                <p>4. Available Service: Dry cleaning + fold</p>
+                <p>1. Membership duration 8 weeks</p>
+                <p>2. Total weight each session 3 Kg</p>
+                <p>3. Total session 16</p>
+                <p>4. Available Service: Dry cleaning + fold + ironing + choose fragrance</p>
             </div>
             <div class="text-center mb-12">  
-                <a href="https://wa.me/+6282321568554?text=Im%20interested%20in%20buying%20the%20Silver%20membership%20" 
+                <a href="https://wa.me/+6282321568554?text=Im%20interested%20in%20buying%20the%20Platinum%20membership%20" 
                    class="inline-flex items-center px-6 py-2 bg-gray-800 text-white border border-transparent rounded-md font-semibold text-sm uppercase tracking-widest hover:bg-gray-700 focus:outline-none focus:bg-gray-700 transition ease-in-out duration-150">
                     {{ __('Buy') }}
                 </a>

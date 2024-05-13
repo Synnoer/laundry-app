@@ -9,7 +9,6 @@
             </button>
         </div>
 
-
         <div class="my-8">
             {{-- Notification --}}
         </div>

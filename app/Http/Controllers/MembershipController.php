@@ -19,10 +19,10 @@ class MembershipController extends Controller
     }
     public function gold()
     {
-        return view('membership/silver');
+        return view('membership/gold');
     }
     public function platinum()
     {
-        return view('membership/silver');
+        return view('membership/platinum');
     }
 }

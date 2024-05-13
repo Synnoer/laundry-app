@@ -23,13 +23,13 @@
                         </button>
                     </x-slot>
                     <x-slot name="content">
-                        <x-dropdown-link href="route('login')">
+                        <x-dropdown-link :href="route('login')">
                             {{ __('Sign In') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('register')">
                             {{ __('Sign Up') }}
                         </x-dropdown-link>
-                        <x-dropdown-link >
+                        <x-dropdown-link>
                             {{ __('Contact') }}
                         </x-dropdown-link>
                         <x-dropdown-link>
