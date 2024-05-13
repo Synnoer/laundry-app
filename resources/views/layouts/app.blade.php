@@ -78,8 +78,9 @@
 
         .quantity-button {
             cursor: pointer;
-            padding: 0.5rem;
-            background-color: #ccc;
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+            background-color: skyblue;
             border-radius: 0.25rem;
             margin: 0 0.25rem; /* Add space between buttons */
         }

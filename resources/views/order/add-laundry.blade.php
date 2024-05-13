@@ -6,10 +6,10 @@
     <div class="my-8 flex flex-col justify-center items-center space-y-10">
         <div class="bg-white dark:bg-grey-300 rounded-lg shadow-md p-4">
             <div class="product-container">
-                <img src="/path/to/shirt-image.png" alt="Shirt" class="product-image">
+                <img src="/image/shirt.png" alt="Shirt" class="product-image">
                 <div class="product-details">
-                    <p class="description">Shirt Description</p>
-                    <p class="price">$10/pcs</p>
+                    <p class="description">Shirt</p>
+                    <p class="weight">350gram/pcs</p>
                 </div>
                 <div class="quantity-buttons">
                     <button class="quantity-button">-</button>
@@ -18,10 +18,10 @@
                 </div>
             </div>
             <div class="product-container">
-                <img src="/path/to/shirt-image.png" alt="Shirt" class="product-image">
+                <img src="/image/pants.png" alt="Shirt" class="product-image">
                 <div class="product-details">
-                    <p class="description">Shirt Description</p>
-                    <p class="price">$10/pcs</p>
+                    <p class="description">Pants</p>
+                    <p class="weight">350gram/pcs</p>
                 </div>
                 <div class="quantity-buttons">
                     <button class="quantity-button">-</button>
@@ -30,10 +30,10 @@
                 </div>
             </div>
             <div class="product-container">
-                <img src="/path/to/shirt-image.png" alt="Shirt" class="product-image">
+                <img src="/image/jacket.png" alt="Shirt" class="product-image">
                 <div class="product-details">
-                    <p class="description">Shirt Description</p>
-                    <p class="price">$10/pcs</p>
+                    <p class="description">Jacket</p>
+                    <p class="weight">450gram/pcs</p>
                 </div>
                 <div class="quantity-buttons">
                     <button class="quantity-button">-</button>
@@ -42,40 +42,29 @@
                 </div>
             </div>
             <div class="product-container">
-                <img src="/path/to/shirt-image.png" alt="Shirt" class="product-image">
+                <img src="/image/t-shirt.png" alt="Shirt" class="product-image">
                 <div class="product-details">
-                    <p class="description">Shirt Description</p>
-                    <p class="price">$10/pcs</p>
+                    <p class="description">T-Shirt</p>
+                    <p class="weight">350gram/pcs</p>
                 </div>
                 <div class="quantity-buttons">
-                    <button class="quantity-button">-</button>
+                    <button class="quantity-button ">-</button>
                     <span class="quantity">1</span>
                     <button class="quantity-button">+</button>
                 </div>
             </div>
             <div class="product-container">
-                <img src="/path/to/shirt-image.png" alt="Shirt" class="product-image">
+                <img src="/image/underwear.png" alt="Shirt" class="product-image">
                 <div class="product-details">
-                    <p class="description">Shirt Description</p>
-                    <p class="price">$10/pcs</p>
+                    <p class="description">Underwear</p>
+                    <p class="weight">250gram/pcs</p>
                 </div>
                 <div class="quantity-buttons">
                     <button class="quantity-button">-</button>
                     <span class="quantity">1</span>
                     <button class="quantity-button">+</button>
                 </div>
-            </div>
-            <div class="product-container">
-                <img src="/path/to/shirt-image.png" alt="Shirt" class="product-image">
-                <div class="product-details">
-                    <p class="description">Shirt Description</p>
-                    <p class="price">$10/pcs</p>
-                </div>
-                <div class="quantity-buttons">
-                    <button class="quantity-button">-</button>
-                    <span class="quantity">1</span>
-                    <button class="quantity-button">+</button>
-                </div>
+
             </div>
         </div>
     </div>
