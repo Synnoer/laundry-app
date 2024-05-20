@@ -9,31 +9,36 @@
             </button>
         </div>
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-gray-300 dark:bg-gray-400 shadow sm:rounded-lg">
                 <div class="max-w-xl">
-                    <h2 class="font-size: 3rem">Get Membership Now</h1>
-                    <p>Get membership now and enjoy many benefits</p>
+                    <h2 class="text-3xl font-bold mb-4">Get Membership Now</h2>
+                    <p class="mb-4">Get membership now and enjoy many benefits</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="flex justify-center items-center h-full">
+
+    <div class="flex justify-center items-center h-full mt-8">
         <div class="flex flex-col justify-center items-center space-y-10">
-            <!-- Button 1 -->
+            <!-- Silver Membership Button -->
             <button onclick="window.location='{{ route('membership.silver') }}'" class="px-10 py-2 bg-zinc-400 text-white rounded-md focus:outline-none">
-                Silver
+                <p class="font-semibold">Silver</p>
+                <p>Rp. 30.000/Month</p>
             </button>
             
-            <!-- Button 2 -->
+            <!-- Gold Membership Button -->
             <button onclick="window.location='{{ route('membership.gold') }}'" class="px-10 py-2 bg-amber-300 text-white rounded-md focus:outline-none">
-                Gold
+                <p class="font-semibold">Gold</p>
+                <p>Rp. 100.000/Month</p>
             </button>
             
-            <!-- Button 3 -->
+            <!-- Platinum Membership Button -->
             <button onclick="window.location='{{ route('membership.platinum') }}'" class="px-10 py-2 bg-zinc-700 text-white rounded-md focus:outline-none">
-                Platinum
+                <p class="font-semibold">Platinum</p>
+                <p>Rp. 150.000/Month</p>
             </button>
         </div>
     </div>

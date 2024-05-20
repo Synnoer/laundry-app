@@ -9,6 +9,7 @@ use Illuminate\View\View;
 
 class MembershipController extends Controller
 {
+
     public function index()
     {
         return view('membership/member');
@@ -25,4 +26,9 @@ class MembershipController extends Controller
     {
         return view('membership/platinum');
     }
+    public function member()
+    {
+        return view('home/notification');
+    }
+
 }

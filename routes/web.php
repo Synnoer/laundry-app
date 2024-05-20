@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MembershipController;
-use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,10 +15,11 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/notification', [NotificationController::class, 'notification'])->name('notification');
+    Route::get('/notification', [DashboardController::class, 'notification'])->name('notification');
+    Route::get('/about', [DashboardController::class, 'about'])->name('about');
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
     Route::get('/order/add', [OrderController::class, 'add'])->name('order.add');
-    Route::get('/order/{id}', [OrderController::class, 'detail'])->name('order.detail');
+    Route::get('/order/checkout', [OrderController::class, 'detail'])->name('order.checkout');
     Route::get('/member', [MembershipController::class, 'index'])->name('membership.index');
     Route::get('/member/silver', [MembershipController::class, 'silver'])->name('membership.silver');
     Route::get('/member/gold', [MembershipController::class, 'gold'])->name('membership.gold');

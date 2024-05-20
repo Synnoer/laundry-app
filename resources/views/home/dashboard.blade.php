@@ -29,10 +29,10 @@
                         <x-dropdown-link :href="route('register')">
                             {{ __('Sign Up') }}
                         </x-dropdown-link> --}}
-                        <x-dropdown-link>
+                        <x-dropdown-link href="https://wa.me/+6289670169478?text=Help">
                             {{ __('Contact') }}
                         </x-dropdown-link>
-                        <x-dropdown-link>
+                        <x-dropdown-link :href="route('about')">
                             {{ __('About Us') }}
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
@@ -49,7 +49,7 @@
 
         {{-- Membership Status --}}
         <div class="my-8">
-            <div class="bg-white dark:bg-violet-800 rounded-lg shadow-md p-6">
+            <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
                 <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Membership Status</h3>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-white sm:rounded-lg">
