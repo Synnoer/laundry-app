@@ -13,10 +13,10 @@
             </x-slot>
             <x-slot name="content">
                 <x-dropdown-link>
-                    {{ __('Tuesday') }}
+                    {{ __('Date 1') }}
                 </x-dropdown-link>
                 <x-dropdown-link>
-                    {{ __('Thursday') }}
+                    {{ __('Date 2') }}
                 </x-dropdown-link>
             </x-slot>
         </x-dropdown>
@@ -30,10 +30,10 @@
             </x-slot>
             <x-slot name="content">
                 <x-dropdown-link>
-                    {{ __('Rose') }}
+                    {{ __('Fragrance 1') }}
                 </x-dropdown-link>
                 <x-dropdown-link>
-                    {{ __('Jasmine') }}
+                    {{ __('Fragrance 2') }}
                 </x-dropdown-link>
             </x-slot>
         </x-dropdown>
