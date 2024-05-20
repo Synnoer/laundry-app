@@ -12,8 +12,8 @@ class DashboardController extends Controller
 {
     public function member()
     {
-        $membership = Membership::all();
-        
+        $memberships = Membership::all();
+
     }
     public function notification()
     {

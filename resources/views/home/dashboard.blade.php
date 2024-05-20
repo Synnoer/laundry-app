@@ -54,7 +54,7 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-white sm:rounded-lg">
                         <p class="text-sm text-black">Started from:</p>
-                        <p><span class="font-semibold">XX/XX/XXXX</span></p>
+                        <p><span class="font-semibold">x</span></p>
                     </div>
                     <div class="bg-white sm:rounded-lg">
                         <p class="text-sm text-black">Ends:</p>
