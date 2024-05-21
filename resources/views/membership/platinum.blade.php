@@ -12,7 +12,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-zinc-400 shadow sm:rounded-lg">
+            <div class="p-4 sm:p-8 bg-gradient-to-r from-slate-400 to-slate-600 shadow sm:rounded-lg">
                 <div class="max-w-xl">
                     <h2 class="text-3xl font-bold">Platinum Membership</h2>
                     <p>Rp 150.000/month</p>

@@ -35,7 +35,7 @@ class RegisteredUserController extends Controller
             'gender' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'phone_number' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
@@ -45,18 +45,11 @@ class RegisteredUserController extends Controller
             'gender' => $request->gender,
             'address' => $request->address,
             'email' => $request->email,
-            'phone_number' => $request->phone_number,
+            'phone' => $request->phone,
+            'avatar_url' => $request->avatar_url,
             'password' => Hash::make($request->password),
         ]);
-
-        // Assign the role_id
-        // DB::table('role_user')->insert([
-        //     'role_id' => 2, // Customer role_id
-        //     'user_id' => $user->id,
-        // ]);
-
         
-
         // Fire the Registered event
         event(new Registered($user));
 

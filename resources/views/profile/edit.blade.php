@@ -10,7 +10,9 @@
             <div class="flex items-center space-x-4">
                 {{-- Notification Button --}}
                 <button class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                    <img src="/image/notification.png" alt="Settings" class="w-12 h-12 fill-current">
+                    <a href="{{ route('notification') }}" >
+                        <img src="/image/notification.png" alt="Settings" class="w-12 h-12 fill-current">
+                    </a>
                     </svg>
                 </button>
 
@@ -22,10 +24,16 @@
                         </button>
                     </x-slot>
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                        {{-- <x-dropdown-link :href="route('login')">
+                            {{ __('Sign In') }}
                         </x-dropdown-link>
-                        <x-dropdown-link>
+                        <x-dropdown-link :href="route('register')">
+                            {{ __('Sign Up') }}
+                        </x-dropdown-link> --}}
+                        <x-dropdown-link href="https://wa.me/+6289670169478?text=Help">
+                            {{ __('Contact') }}
+                        </x-dropdown-link>
+                        <x-dropdown-link :href="route('about')">
                             {{ __('About Us') }}
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">

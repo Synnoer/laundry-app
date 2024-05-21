@@ -10,16 +10,18 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'product_description',
-        'quantity',
+        'product_details',
         'total_weight',
         'service',
         'fragrance',
-        'total_price',
-        'subtotal',
-        'discount',
         'order_date',
-        'completion_estimation_date'
+        'completion_estimation_date',
+        'user_id' // foreign key (Table User)
+    ];
+
+    protected $casts = [
+        'product_details' => 'array',
+        'order_date' => 'datetime',
+        'completion_estimation_date' => 'datetime',
     ];
 }
-

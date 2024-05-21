@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MembershipController;
@@ -15,11 +16,14 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::get('/admin', [AdminController::class, 'home'])->name('admin.home');
+    Route::patch('/admin/update', [AdminController::class, 'updateMembership'])->name('admin.updateMembership');
     Route::get('/notification', [DashboardController::class, 'notification'])->name('notification');
     Route::get('/about', [DashboardController::class, 'about'])->name('about');
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
     Route::get('/order/add', [OrderController::class, 'add'])->name('order.add');
     Route::get('/order/checkout', [OrderController::class, 'detail'])->name('order.checkout');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/member', [MembershipController::class, 'index'])->name('membership.index');
     Route::get('/member/silver', [MembershipController::class, 'silver'])->name('membership.silver');
     Route::get('/member/gold', [MembershipController::class, 'gold'])->name('membership.gold');

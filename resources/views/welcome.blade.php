@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="container-fluid">
-            <h1><img src="/image/byADJ.png" alt=""></h1>
+            <a href="admin"><img src="/image/byADJ.png" alt=""></a>
         </div>
     </body>
 </html>

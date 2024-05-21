@@ -11,6 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('membership_types', function (Blueprint $table) {
+            $table->id();
+            $table->string('type_name');
+            $table->integer('durations');
+            $table->integer('session');
+            $table->string('service');
+        });
         Schema::create('memberships', function (Blueprint $table) {
             $table->id();
             $table->date('join_date');
@@ -25,6 +32,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('membership_types');
         Schema::dropIfExists('memberships');
     }
 };
