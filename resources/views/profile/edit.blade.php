@@ -1,13 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
-        
-        <div class="flex justify-between items-center">
-            <div class="flex items-center">
-                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                    {{ __('Profile') }}
-                </h2>
-            </div>
-            <div class="flex items-center space-x-4">
+
+    <div class=" flex items-center space-x-4">
                 {{-- Notification Button --}}
                 <button class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
                     <a href="{{ route('notification') }}" >
@@ -45,8 +39,23 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-            </div>
+    </div>
+
+
+    <div class="d-flex justify-between">
+        <div class="flex items-center">
+                <p class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    {{ __('Ahmad Noer Husaeni') }}
+                </p>
         </div>
+        <div class="flex items-center">
+                <p class="font-semibold text-xs text-gray-800 dark:text-gray-200 leading-tight">
+                    {{ __('08784872xxxx') }}
+                </p>
+        </div>
+    </div>
+
+
     </x-slot>
 
     <div class="py-12">
