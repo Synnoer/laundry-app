@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\User;
+use App\Models\Fragrance;
+use App\Models\Membership;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -12,9 +15,11 @@ class OrderController extends Controller
     public function index(): View
     {
         $order_dates = ['2024-05-25', '2024-05-26', '2024-05-27'];
-        $fragrances = ['Rose', 'Jasmine', 'Lavender', 'Sandalwood'];
+        $fragrances = fragrance::all();
+        $users = User::with('membership.membershiptype')->get();
+        $memberships = Membership::with('membershiptype')->get();
 
-        return view('order.laundry', compact('order_dates', 'fragrances'));
+        return view('order.laundry', compact('order_dates', 'fragrances' ,'users','memberships'));
     }
 
     public function add(Request $request): View
@@ -56,10 +61,10 @@ class OrderController extends Controller
         $order = [
             'products' => $validatedData['products'],
             'total_weight' => $totalWeight,
-            'service' => 'Laundry Service', // This can be dynamic
+            'service' => 'Laundry Service',
             'fragrance' => $validatedData['fragrance'],
             'order_date' => $validatedData['order_date'],
-            'completion_estimation_date' => now()->addDays(2)->toDateString(), // Example estimation date
+            'completion_estimation_date' => now()->addDays(2)->toDateString(),
             'user_id' => auth()->id(),
         ];
 
