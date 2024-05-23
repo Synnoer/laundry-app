@@ -48,8 +48,9 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'avatar_url' => $request->avatar_url,
             'password' => Hash::make($request->password),
+            'role_id' => ($request->role_id) ? 2 : 1,
         ]);
-        
+
         // Fire the Registered event
         event(new Registered($user));
 
