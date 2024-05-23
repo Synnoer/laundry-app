@@ -22,8 +22,8 @@
         }
 
         .nav-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             margin-bottom: 0.5rem;
             transition: color 0.3s ease;
         }

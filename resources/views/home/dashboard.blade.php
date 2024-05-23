@@ -9,7 +9,7 @@
             <div class="flex items-center space-x-4">
                 {{-- Notification Button --}}
                 <button class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                    <a href="{{ route('notification') }}" >
+                    <a href="{{ route('notification') }}">
                         <img src="/image/notification.png" alt="Settings" class="w-12 h-12 fill-current">
                     </a>
                     </svg>
@@ -37,8 +37,7 @@
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault(); this.closest('form').submit();">
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -47,47 +46,55 @@
             </div>
         </div>
 
-        {{-- Membership Status --}}
-        <div class="my-8 scroll-mx-0" id="Membership">
-            <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Membership Status</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white sm:rounded-lg">
-                        <p class="text-sm text-black">Started from:</p>
-                        <p class="border px-4 py-2">
-                            {{ Auth::user()->membership->join_date ?? 'No service available' }}
-                        </p>
-                    </div>
-                    <div class="bg-white sm:rounded-lg">
-                        <p class="text-sm text-black">Ends:</p>
-                        <p class="border px-4 py-2">
-                            {{ Auth::user()->membership->end_date ?? 'No service available' }}
-                        </p>
+        <div class="snap-x snap-mandatory">
+            <div class="snap-always snap-center ">
+                {{-- Membership Status --}}
+                <div class="my-8 scroll-mx-0" id="Membership">
+                    <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Membership Status</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white sm:rounded-lg">
+                                <p class="text-sm text-black">Started from:</p>
+                                <p class="border px-4 py-2">
+                                    {{ Auth::user()->membership->join_date ?? 'No service available' }}
+                                </p>
+                            </div>
+                            <div class="bg-white sm:rounded-lg">
+                                <p class="text-sm text-black">Ends:</p>
+                                <p class="border px-4 py-2">
+                                    {{ Auth::user()->membership->end_date ?? 'No service available' }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        {{-- Session --}}
-        <div class="my-8 scroll-ml-0" id="Session">
-            <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Session</h3>
-                <div class="bg-white sm:rounded-lg">
-                    <p class="text-sm text-black text-center">Session left:</p>
-                    <p class="border px-4 py-2 text-center">
-                        {{ Auth::user()->membership->session_left ?? 'No session available' }}
-                    </p>
+            <div class="snap-always snap-center ">
+                {{-- Session --}}
+                <div class="my-8 scroll-ml-0" id="Session">
+                    <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Session</h3>
+                        <div class="bg-white sm:rounded-lg">
+                            <p class="text-sm text-black text-center">Session left:</p>
+                            <p class="border px-4 py-2 text-center">
+                                {{ Auth::user()->membership->session_left ?? 'No session available' }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        {{-- Charges --}}
-        <div class="my-8 scroll-mr-0" id="Charges">
-            <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Charges</h3>
-                <div class="bg-white sm:rounded-lg">
-                    <p class="text-sm text-black text-center">Unpayed Charges:</p>
-                    <p class="border px-4 py-2 text-center">
-                        {{ Auth::user()->membership->session_left ?? 'No session available' }}
-                    </p>
+            <div class=" snap-always snap-center ">
+                {{-- Charges --}}
+                <div class="my-8 scroll-mr-0" id="Charges">
+                    <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Charges</h3>
+                        <div class="bg-white sm:rounded-lg">
+                            <p class="text-sm text-black text-center">Unpayed Charges:</p>
+                            <p class="border px-4 py-2 text-center">
+                                {{ Auth::user()->membership->session_left ?? 'No session available' }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
