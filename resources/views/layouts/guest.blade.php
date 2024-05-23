@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +15,8 @@
         .image-container {
             position: relative;
             width: 100%;
-            max-width: 200px; /* Adjust this value as needed */
+            max-width: 200px;
+            /* Adjust this value as needed */
         }
 
         .overlay-image {
@@ -27,8 +29,9 @@
         }
     </style>
 </head>
-<body class="font-sans text-gray-900 antialiased">
-    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-15 sm:pt-0 bg-sky-300">
+
+<body class="w-fit font-sans text-gray-900 antialiased">
+    <div class="h-fit w-fit flex flex-col sm:justify-center items-center pt-15 sm:pt-0 bg-sky-300">
         <div class="image-container">
             <img src="/image/ImageSign1.png" alt="Background Image" class="w-full" />
             <img src="/image/character.png" alt="Overlay Image" class="overlay-image" />
@@ -39,4 +42,5 @@
         </div>
     </div>
 </body>
+
 </html>
