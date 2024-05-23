@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Membership;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Order;
 
 class DashboardController extends Controller
 {
-    public function member()
+    public function home()
     {
-        $memberships = Membership::all();
-
+        $orders = Order::with(['product_details'])->get();
+        return view("home/dashboard", compact('orders'));
     }
     public function notification()
     {

@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{ config('app.name', 'Laravel') }}</title>
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -38,22 +37,30 @@
         </style>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-white dark:bg-gray-700">
-            <header>
-                <h1 class="text-black">Make an Order</h1>
+        <div class="min-h-screen bg-white dark:bg-gray-200">
+            <!-- Page Heading -->
+            <header class="bg-sky-900 dark:bg-blue-900 shadow">
+                <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <img src="/image/logo-white.png" alt="Logo" class="w-13 h-12 mr-4">
+                            <a href="/admin" class="text-2xl font-semibold text-white">Admin Page</a>
+                        </div>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <x-dropdown-link :href="route('logout')"
+                                onclick="event.preventDefault(); this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </x-dropdown-link>
+                        </form>
+                    </div>
+                </div>
             </header>
 
+            <!-- Page Content -->
             <main>
-                <!-- Page Content -->
-                {{-- {{ $slot }} --}}
-                <x-primary-button class="primary-button">{{ __('Next') }}</x-primary-button>
+                {{ $slot }}
             </main>
-
-            <footer>
-                <div class="py-12">
-                    @include('layouts.navigation')
-                </div>
-            </footer>
         </div>
     </body>
 </html>

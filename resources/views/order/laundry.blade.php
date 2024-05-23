@@ -40,7 +40,7 @@
             <x-slot name="content">
                 @foreach ($fragrances as $fragrance)
                     <x-dropdown-link onclick="setFragrance('{{ $fragrance }}')">
-                        {{ $fragrance }}
+                        {{ $fragrance->fragrance_name }}
                     </x-dropdown-link>
                 @endforeach
             </x-slot>
@@ -49,7 +49,7 @@
     </div>
 
     <div class="my-8">
-        <p class="text-gray-700">Service: </p>
+        <p class="text-gray-700">Service: {{ Auth::user()->membership->membershiptype }}</p>
     </div>
 
     <div class="my-8 flex flex-col justify-center items-center space-y-10">

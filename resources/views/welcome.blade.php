@@ -38,10 +38,10 @@
     <body>
         <!-- Screen 1 -->
         <div class="w-full h-screen flex flex-col justify-between items-center px-4 py-8" id="screen-1">
-            <a href="" class="font-bold">
+            <a class="font-bold">
                 by ADJ
             </a>
-            <a href="">
+            <a >
                 <img src="/image/Logo.png" alt="logo" />
             </a>
             <span>&nbsp;</span>

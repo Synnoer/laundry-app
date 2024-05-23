@@ -16,7 +16,7 @@ class Order extends Model
         'fragrance',
         'order_date',
         'completion_estimation_date',
-        'user_id' // foreign key (Table User)
+        'user_id'
     ];
 
     protected $casts = [

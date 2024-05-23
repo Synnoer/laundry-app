@@ -15,4 +15,9 @@ class Membership extends Model
         'session_left',
         'membership_type_id'
     ];
+
+    public function membershiptype()
+    {
+        return $this->belongsTo(Membership_Type::class);
+    }
 }

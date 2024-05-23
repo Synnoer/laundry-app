@@ -5,15 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Membership_Type extends Model
+class Fragrance extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'type_name',
-        'durations',
-        'session',
-        'service'
+        'fragrance_name'
     ];
-    protected $table = 'membership_types';
+
 }
