@@ -23,6 +23,10 @@ class DashboardController extends Controller
         
         return view("home.dashboard", compact('ongoingOrders'));
     }
+    public function ongoing()
+    {
+        return view('home/ongoing-laundry');
+    }
 
     public function notification()
     {
