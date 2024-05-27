@@ -28,7 +28,7 @@
                                             <td class="border px-4 py-2">{{ $user->email }}</td>
                                             <td class="border px-4 py-2">{{ $user->role->role_name }}</td>
                                             <td class="border px-4 py-2">
-                                                <form action="{{ route('admin.updateMembership') }}" method="POST">
+                                                <form action="{{ route('admin.updateMembership') }}" method="POST" class="membership-form">
                                                     @csrf
                                                     @method('patch')
                                                     <input type="hidden" name="user_id" value="{{ $user->id }}">
@@ -59,7 +59,7 @@
 
         selects.forEach(select => {
             select.addEventListener('change', function () {
-                let userId = this.dataset.userId;
+                let userId = this.getAttribute('data-user-id');
                 let membershipId = this.value;
 
                 // Send AJAX request to update membership
@@ -70,20 +70,24 @@
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
+                        user_id: userId,
                         membership_id: membershipId
                     })
                 })
                 .then(response => {
                     if (response.ok) {
                         alert('Membership updated successfully');
-                    } else {
-                        alert('Failed to update membership');
                     }
+                    // else {
+                    //     alert('Failed to update membership');
+                    // }
                 })
                 .catch(error => {
                     console.error('Error:', error);
+                    alert('An error occurred while updating the membership');
                 });
             });
         });
     });
 </script>
+
