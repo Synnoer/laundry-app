@@ -30,7 +30,7 @@
     </style>
 </head>
 
-<body class="w-fit font-sans text-gray-900 antialiased">
+<body class="w-screen font-sans text-gray-900 antialiased">
     <div class="h-fit w-fit flex flex-col sm:justify-center items-center pt-15 sm:pt-0 bg-sky-300">
         <div class="image-container">
             <img src="/image/ImageSign1.png" alt="Background Image" class="w-full" />

@@ -103,6 +103,8 @@ class OrderController extends Controller
             'user_id' => $validatedData['user_id'],
         ]);
 
+        
+
         return redirect()->route('dashboard')->with('success', 'Order created successfully.');
     }
 }
