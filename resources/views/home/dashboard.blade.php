@@ -102,17 +102,25 @@
 
     <main class="p-6 ">
         <h1 class="text-black text-left">Ongoing Order</h1>
-        <div class="w-full bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
-            <div>
-                <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+        @if($ongoingOrders->isNotEmpty())
+            <div class="w-full bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
+                @foreach($ongoingOrders as $order)
+                    <div>
+                        <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+                    </div>
+                    <div>
+                        <h3 class="border-black px-4 py-2 text-center">
+                            @foreach($order->product_details as $detail)
+                                {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
+                            @endforeach
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
+                            <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div>
-                <h3 class="border-black px-4 py-2 text-center">{{ Auth::user()->order->product_details ?? 'order details'}}</h3>
-                <div class="grid grid-cols-2 gap-2">
-                    <p class="border-black px-4 py-2">{{ Auth::user()->order->order_date ?? 'start'}}</p>
-                    <p class="border-black px-4 py-2">{{ Auth::user()->order->completion_estimation_date ?? 'end'}}</p>
-                </div>
-            </div>
-        </div>
-    </main>
+        @endif
+    </main>    
 </x-app-layout>

@@ -60,6 +60,15 @@
                         {{ (Auth::user()->phone) }}
                     </p>
                 </div>
+                <div class="flex-initial">
+                    <p class="font-semibold text-xs text-gray-200 dark:text-gray-800 leading-tight">
+                        @if (Auth::user()->membership && Auth::user()->membership->membershipType)
+                            {{ Auth::user()->membership->membershipType->type_name }}
+                        @else
+                            Error!
+                        @endif
+                    </p>
+                </div>
             </div>
         </div>
 
