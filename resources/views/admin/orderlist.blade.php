@@ -21,8 +21,8 @@
                                 <tbody>
                                     @foreach ($orders as $order)
                                         <tr>
-                                            <td class="border px-4 py-2">{{ $order->order_date->format('Y-m-d') }}</td>
-                                            <td class="border px-4 py-2">{{ $order->completion_estimation_date->format('Y-m-d') }}</td>
+                                            <td class="border px-4 py-2">{{ $order->order_date}}</td>
+                                            <td class="border px-4 py-2">{{ $order->completion_estimation_date}}</td>
                                             <td class="border px-4 py-2">{{ $order->user->name }}</td>
                                             <td class="border px-4 py-2">
                                                 <ul>

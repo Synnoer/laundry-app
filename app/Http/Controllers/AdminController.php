@@ -27,12 +27,23 @@ class AdminController extends Controller
 
     public function updateMembership(Request $request)
     {
-        $user = User::find($request->input('user_id'));
-        $user->membership_id = $request->input('membership_id');
-        $user->save();
+    $request->validate([
+        'membership_id' => 'required|exists:membership_types,id',
+    ]);
+    
+    $user = User::findOrFail($request->input('user_id'));
+    $membership = $user->membership;
+    
+    if ($membership) {
+        $membership->membership_type_id = $request->input('membership_id');
+        $membership->save();
 
-        return redirect()->route('/admin/home')->with('success', 'Membership updated successfully');
+        return response()->json(['message' => 'Membership updated successfully!'], 200);
     }
+
+    return response()->json(['message' => 'Membership not found'], 404);
+    }
+
 
     public function orderlist()
     {
