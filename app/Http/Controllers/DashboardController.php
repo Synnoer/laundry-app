@@ -12,9 +12,18 @@ class DashboardController extends Controller
 {
     public function home()
     {
-        $orders = Order::with(['product_details'])->get();
-        return view("home/dashboard", compact('orders'));
+        // Fetch only the ongoing orders for the logged-in user
+        $ongoingOrders = Order::where('user_id', auth()->id())
+                            ->where('completion_estimation_date', '>=', now())
+                            ->get();
+
+        foreach ($ongoingOrders as $order) {
+            $order->product_details = json_decode($order->product_details, true);
+        }               
+        
+        return view("home.dashboard", compact('ongoingOrders'));
     }
+
     public function notification()
     {
         return view('home/notification');

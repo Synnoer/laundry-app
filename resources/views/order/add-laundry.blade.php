@@ -57,7 +57,7 @@
         function updateTotalWeight() {
             let totalWeight = 0;
             document.querySelectorAll('.product-container').forEach(container => {
-                let weight = parseInt(container.querySelector('.weight').getAttribute('data-weight'));
+                let weight = parseInt(container.querySelector('.weight').textContent);
                 let quantity = parseInt(container.querySelector('.quantity').textContent);
                 totalWeight += weight * quantity;
             });

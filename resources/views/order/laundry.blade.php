@@ -27,7 +27,7 @@
                 @endforeach
             </x-slot>
         </x-dropdown>
-        <input type="hidden" name="order_date" id="order_date">
+        <input class="bg-gray-200" name="order_date" id="order_date">
 
         <!-- Choose Fragrance -->
         <x-dropdown width="48">
@@ -39,17 +39,17 @@
             </x-slot>
             <x-slot name="content">
                 @foreach ($fragrances as $fragrance)
-                    <x-dropdown-link onclick="setFragrance('{{ $fragrance }}')">
+                    <x-dropdown-link onclick="setFragrance('{{ $fragrance->fragrance_name }}')">
                         {{ $fragrance->fragrance_name }}
                     </x-dropdown-link>
                 @endforeach
             </x-slot>
         </x-dropdown>
-        <input type="hidden" name="fragrance" id="fragrance">
+        <input class="bg-gray-200" name="fragrance" id="fragrance">
     </div>
 
     <div class="my-8">
-        <p class="text-gray-700">Service: {{ Auth::user()->membership->membershiptype }}</p>
+        <p class="text-gray-700">Service: {{ Auth::user()->membership->membershipType->service }}</p>
     </div>
 
     <div class="my-8 flex flex-col justify-center items-center space-y-10">

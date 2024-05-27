@@ -15,11 +15,11 @@ class OrderController extends Controller
     public function index(): View
     {
         $order_dates = ['2024-05-25', '2024-05-26', '2024-05-27'];
-        $fragrances = fragrance::all();
+        $fragrances = Fragrance::all();
         $users = User::with('membership.membershiptype')->get();
         $memberships = Membership::with('membershiptype')->get();
 
-        return view('order.laundry', compact('order_dates', 'fragrances' ,'users','memberships'));
+        return view('order.laundry', compact('order_dates', 'fragrances', 'users', 'memberships'));
     }
 
     public function add(Request $request): View
@@ -54,10 +54,6 @@ class OrderController extends Controller
             return $product['weight'] * $product['quantity'];
         }, $validatedData['products']));
 
-        // if ($totalWeight > 3000) {
-        //     return back()->withErrors(['total_weight' => 'The total weight of the order must not exceed 3kg.'])->withInput();
-        // }
-
         $order = [
             'products' => $validatedData['products'],
             'total_weight' => $totalWeight,
@@ -73,6 +69,14 @@ class OrderController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        // Decode JSON string to array
+        $request->merge([
+            'products' => json_decode($request->input('products'), true),
+        ]);
+
+        // Debug: Check incoming request data after decoding
+        logger()->debug('Store Order Request Data after decoding:', $request->all());
+
         $validatedData = $request->validate([
             'products' => 'required|array',
             'products.*.name' => 'required|string',
@@ -87,8 +91,10 @@ class OrderController extends Controller
             'user_id' => 'required|exists:users,id',
         ]);
 
-        $order = Order::create([
-            'product_details' => $validatedData['products'],
+        logger()->debug('Validated Order Data:', $validatedData);
+
+        Order::create([
+            'product_details' => json_encode($validatedData['products']),
             'total_weight' => $validatedData['total_weight'],
             'service' => $validatedData['service'],
             'fragrance' => $validatedData['fragrance'],
