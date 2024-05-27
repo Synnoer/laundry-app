@@ -40,6 +40,7 @@
 
         <!-- Checkout Button -->
         <div class="next-button text-center">
+            @if (Auth::user()->membership->session_left > 0)
             <form method="POST" action="{{ route('orders.store') }}">
                 @csrf
                 <input type="hidden" name="products" value="{{ json_encode($order['products']) }}">
@@ -52,6 +53,7 @@
 
                 <x-primary-button>{{ __('Checkout') }}</x-primary-button>
             </form>
+            @endif
         </div>
     </main>
 </x-app-layout>
