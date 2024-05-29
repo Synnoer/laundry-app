@@ -1,4 +1,10 @@
 <x-guest-layout>
+    <x-slot name="header">
+        <div class="fak" >
+            <img src="/image/BG-Gambar.png" alt="Background Image"  />
+            
+        </div>
+    </x-slot>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
     <h1 class="text-3xl font-bold mb-4">Sign In</h1>

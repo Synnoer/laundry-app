@@ -1,4 +1,10 @@
 <x-guest-layout>
+    <x-slot name="header">
+        <div class="fak" >
+            <img src="/image/BG-SignUp.png" alt="Background Image"  />
+            
+        </div>
+    </x-slot>
     <h1 class="text-3xl font-bold mb-4">Sign Up</h1>
     <form method="POST" action="{{ route('register') }}">
         @csrf
