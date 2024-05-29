@@ -1,4 +1,10 @@
 <x-guest-layout>
+    <x-slot name="header">
+        <div class="fak" >
+            <img src="/image/BG-ForgotPW.png" alt="Background Image"  />
+            
+        </div>
+    </x-slot>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
     </div>
@@ -20,6 +26,9 @@
             <x-primary-button>
                 {{ __('Email Password Reset Link') }}
             </x-primary-button>
+        </div>
+        <div class="mt-4">
+            <a href="{{ route('login') }}" class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-900">{{ __('Sign In') }}</a>
         </div>
     </form>
 </x-guest-layout>
