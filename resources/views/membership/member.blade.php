@@ -24,19 +24,19 @@
     <div class="flex justify-center items-center h-full mt-8">
         <div class="flex flex-col justify-center items-center space-y-10">
             <!-- Silver Membership Button -->
-            <button onclick="window.location='{{ route('membership.silver') }}'" class="px-10 py-2 bg-zinc-400 text-white rounded-md focus:outline-none">
+            <button onclick="window.location='{{ route('membership.silver') }}'" class="px-10 py-2 bg-gradient-to-r from-zinc-50 to-zinc-400 text-black rounded-md focus:outline-none">
                 <p class="font-semibold">Silver</p>
                 <p>Rp. 30.000/Month</p>
             </button>
             
             <!-- Gold Membership Button -->
-            <button onclick="window.location='{{ route('membership.gold') }}'" class="px-10 py-2 bg-amber-300 text-white rounded-md focus:outline-none">
+            <button onclick="window.location='{{ route('membership.gold') }}'" class="px-10 py-2 bg-gradient-to-r from-amber-200 to-amber-400 text-black rounded-md focus:outline-none">
                 <p class="font-semibold">Gold</p>
                 <p>Rp. 100.000/Month</p>
             </button>
             
             <!-- Platinum Membership Button -->
-            <button onclick="window.location='{{ route('membership.platinum') }}'" class="px-10 py-2 bg-zinc-700 text-white rounded-md focus:outline-none">
+            <button onclick="window.location='{{ route('membership.platinum') }}'" class="px-10 py-2 bg-gradient-to-r from-slate-400 to-slate-600 text-black rounded-md focus:outline-none">
                 <p class="font-semibold">Platinum</p>
                 <p>Rp. 150.000/Month</p>
             </button>

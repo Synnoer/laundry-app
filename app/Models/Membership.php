@@ -12,6 +12,12 @@ class Membership extends Model
     protected $fillable = [
         'join_date',
         'end_date',
-        'session_left'
+        'session_left',
+        'membership_type_id'
     ];
+
+    public function membershiptype()
+    {
+        return $this->belongsTo(Membership_Type::class, 'membership_type_id');
+    }
 }

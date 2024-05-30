@@ -2,19 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Membership;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\Order;
 
 class DashboardController extends Controller
 {
-    public function member()
+    public function home()
     {
-        $membership = Membership::all();
+        // Fetch only the ongoing orders for the logged-in user
+        $ongoingOrders = Order::where('user_id', auth()->id())
+                            ->where('completion_estimation_date', '>=', now())
+                            ->get();
+
+        foreach ($ongoingOrders as $order) {
+            $order->product_details = json_decode($order->product_details, true);
+        }               
         
+        return view("home.dashboard", compact('ongoingOrders'));
     }
+    public function ongoing()
+    {
+        return view('home/ongoing-laundry');
+    }
+
     public function notification()
     {
         return view('home/notification');

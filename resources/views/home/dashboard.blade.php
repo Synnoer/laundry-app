@@ -9,7 +9,7 @@
             <div class="flex items-center space-x-4">
                 {{-- Notification Button --}}
                 <button class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                    <a href="{{ route('notification') }}" >
+                    <a href="{{ route('notification') }}">
                         <img src="/image/notification.png" alt="Settings" class="w-12 h-12 fill-current">
                     </a>
                     </svg>
@@ -18,8 +18,8 @@
                 {{-- Settings Dropdown --}}
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
-                        <button class="text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                            <img src="/image/Edit-Button.png" alt="Settings" class="w-5 h-2 fill-current">
+                        <button class="w-auto text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
+                            <img src="/image/Edit-Button.png" alt="Settings" class=" fill-current object-contain w-8 h-6 ">
                         </button>
                     </x-slot>
                     <x-slot name="content">
@@ -37,8 +37,7 @@
                         </x-dropdown-link>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault(); this.closest('form').submit();">
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -47,21 +46,81 @@
             </div>
         </div>
 
-        {{-- Membership Status --}}
-        <div class="my-8">
-            <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
-                <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Membership Status</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white sm:rounded-lg">
-                        <p class="text-sm text-black">Started from:</p>
-                        <p><span class="font-semibold">XX/XX/XXXX</span></p>
+        <div class="snap-x snap-mandatory">
+            <div class="snap-always snap-center ">
+                {{-- Membership Status --}}
+                <div class="my-8 scroll-mx-0" id="Membership">
+                    <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Membership Status</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white sm:rounded-lg">
+                                <p class="text-sm text-black">Started from:</p>
+                                <p class="border px-4 py-2">
+                                    {{ Auth::user()->membership->join_date ?? 'No service available' }}
+                                </p>
+                            </div>
+                            <div class="bg-white sm:rounded-lg">
+                                <p class="text-sm text-black">Ends:</p>
+                                <p class="border px-4 py-2">
+                                    {{ Auth::user()->membership->end_date ?? 'No service available' }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-white sm:rounded-lg">
-                        <p class="text-sm text-black">Ends:</p>
-                        <p><span class="font-semibold">XX/XX/XXXX</span></p>
+                </div>
+            </div>
+            <div class="snap-always snap-center ">
+                {{-- Session --}}
+                <div class="my-8 scroll-ml-0" id="Session">
+                    <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Session</h3>
+                        <div class="bg-white sm:rounded-lg">
+                            <p class="text-sm text-black text-center">Session left:</p>
+                            <p class="border px-4 py-2 text-center">
+                                {{ Auth::user()->membership->session_left ?? 'No session available' }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=" snap-always snap-center ">
+                {{-- Charges --}}
+                <div class="my-8 scroll-mr-0" id="Charges">
+                    <div class="bg-gradient-to-r from-sky-500 to-indigo-500 rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-gray-200 mb-4">Charges</h3>
+                        <div class="bg-white sm:rounded-lg">
+                            <p class="text-sm text-black text-center">Unpayed Charges:</p>
+                            <p class="border px-4 py-2 text-center">
+                                {{ Auth::user()->membership->session_left ?? 'No session available' }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </x-slot>
+
+    <main class="p-6 ">
+        <h1 class="text-black text-left">Ongoing Order</h1>
+        @if($ongoingOrders->isNotEmpty())
+            <div class="w-full bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
+                @foreach($ongoingOrders as $order)
+                    <div>
+                        <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+                    </div>
+                    <div>
+                        <h3 class="border-black px-4 py-2 text-center">
+                            @foreach($order->product_details as $detail)
+                                {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
+                            @endforeach
+                        </h3>
+                        <div class="grid grid-cols-2 gap-2">
+                            <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
+                            <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </main>    
 </x-app-layout>

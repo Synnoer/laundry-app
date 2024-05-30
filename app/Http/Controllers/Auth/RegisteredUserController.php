@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Membership;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -35,27 +36,30 @@ class RegisteredUserController extends Controller
             'gender' => ['required', 'string', 'max:255'],
             'address' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'phone_number' => ['required', 'string', 'max:255'],
+            'phone' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         // Create the user
+        $membership = Membership::create([
+            'join_date' => now(),
+            'end_date' => now()->addDays(2), // Set an end date one year from now
+            'session_left' => 0,
+            'membership_type_id' => 1, // Default membership type
+        ]);
+    
+        // Create the user and associate the membership with the user
         $user = User::create([
             'name' => $request->name,
             'gender' => $request->gender,
             'address' => $request->address,
             'email' => $request->email,
-            'phone_number' => $request->phone_number,
+            'phone' => $request->phone,
+            'avatar_url' => $request->avatar_url,
             'password' => Hash::make($request->password),
+            'role_id' => 2,
+            'membership_id' => $membership->id, // Associate the membership with the user
         ]);
-
-        // Assign the role_id
-        // DB::table('role_user')->insert([
-        //     'role_id' => 2, // Customer role_id
-        //     'user_id' => $user->id,
-        // ]);
-
-        
 
         // Fire the Registered event
         event(new Registered($user));
