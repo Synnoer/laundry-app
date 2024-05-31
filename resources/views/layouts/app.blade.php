@@ -106,24 +106,30 @@
             margin: 0 0.25rem;
             /* Add space between buttons */
         }
+        .header-bg {
+        background-image: url('/Image/BG-Home.png');
+        background-size: cover;
+        background-position: center;
+        }
+
+        
     </style>
 </head>
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-white dark:bg-gray-200">
 
-
         <!-- Page Heading -->
         @if (isset($header))
-        <header class="bg-sky-900 dark:bg-blue-900 shadow">
-            <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <header class="header-bg shadow">
+            <div class="w-full mx-auto ">
                 {{ $header }}
             </div>
         </header>
         @endif
 
         <!-- Page Content -->
-        <main>
+        <main class="bg-white">
             {{ $slot }}
         </main>
 
