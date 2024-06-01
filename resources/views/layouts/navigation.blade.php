@@ -42,8 +42,8 @@
     </style>
 
     <!-- Primary Navigation Menu -->
-    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8 nav-container">
-        <div class="nav-links w-full flex justify-between px-8">
+    <div class="fixed bottom-0 bg-white py-1 w-full mx-auto  nav-container">
+        <div class="nav-links w-full flex justify-between px-6">
             <x-nav-link class="w-fit" :href="route('dashboard')" :active="request()->routeIs('dashboard')" iconSrc="/image/Icon-home-Grey.png">
                 <div class="nav-item w-full">
                     <span class="nav-label">{{ __('Home') }}</span>
