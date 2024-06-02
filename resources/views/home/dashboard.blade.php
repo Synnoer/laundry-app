@@ -93,60 +93,6 @@
     </x-slot>
 
     <main class="p-6 ">
-<<<<<<< HEAD
-        @if ($errors->any())
-        <script>
-            alert('{{ $errors->first() }}');
-        </script>
-        @endif
-        <div>
-            <h1 class="text-black text-left mb-6 ">Ongoing Order</h1>
-            @if($ongoingOrders->isNotEmpty())
-                <div class="w-full border-solid border-2  rounded-md border-black bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
-                    @foreach($ongoingOrders as $order)
-                        <div>
-                            <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
-                        </div>
-                        <div>
-                            <h3 class="border-black px-4 py-2 text-center">
-                                @foreach($order->product_details as $detail)
-                                    {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
-                                @endforeach
-                            </h3>
-                            <div class="grid grid-cols-2 gap-2">
-                                <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
-                                <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-        <div class="mb-6 mt-6">
-            <h1 class="text-black text-left mb-6">Recent Order</h1>
-            <!-- ganti -->
-            @if($ongoingOrders->isNotEmpty())
-                <div class="w-full border-solid border-2  rounded-md border-black bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
-                    @foreach($ongoingOrders as $order)
-                        <div>
-                            <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
-                        </div>
-                        <div>
-                            <h3 class="border-black px-4 py-2 text-center">
-                                @foreach($order->product_details as $detail)
-                                    {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
-                                @endforeach
-                            </h3>
-                            <div class="grid grid-cols-2 gap-2">
-                                <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
-                                <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-=======
     <div>
         <div class="mb-6 mt-6">
         <h1 class="text-black text-left mb-6 ">Ongoing Order</h1>
@@ -196,6 +142,5 @@
             </div>
         @endif
     </div>
->>>>>>> c12c226ada1381c8bb9888c8bde1519d9a1ea340
     </main>    
 </x-app-layout>

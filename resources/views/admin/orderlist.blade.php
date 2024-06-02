@@ -9,14 +9,15 @@
                             <table class="table-auto w-full">
                                 <thead>
                                     <tr>
-                                        <th class="px-4 py-2">Order Date</th>
-                                        <th class="px-4 py-2">Completion Date</th>
-                                        <th class="px-4 py-2">User</th>
-                                        <th class="px-4 py-2">Products</th>
-                                        <th class="px-4 py-2">Total Weight</th>
-                                        <th class="px-4 py-2">Service</th>
-                                        <th class="px-4 py-2">Fragrance</th>
-                                        <th class="px-4 py-2">Status</th>
+                                        <th class="border px-4 py-2">Order Date</th>
+                                        <th class="border px-4 py-2">Completion Date</th>
+                                        <th class="border px-4 py-2">User</th>
+                                        <th class="border px-4 py-2">Products</th>
+                                        <th class="border px-4 py-2">Total Weight</th>
+                                        <th class="border px-4 py-2">Service</th>
+                                        <th class="border px-4 py-2">Fragrance</th>
+                                        <th class="border px-4 py-2">Status</th>
+                                        <th class="border px-4 py-2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,14 +36,26 @@
                                             <td class="border px-4 py-2">{{ $order->total_weight }} g</td>
                                             <td class="border px-4 py-2">{{ $order->service }}</td>
                                             <td class="border px-4 py-2">{{ $order->fragrance }}</td>
-                                            <td class="border px-4 py-2">{{ $order->status }}</td>
-                                            <td class="px-4 py-2">
+                                            @if($order->status==0)
+                                            <td class="border px-4 py-2">Ongoing</td>
+                                            @endif
+                                            @if($order->status==1)
+                                            <td class="border px-4 py-2">Complete</td>
+                                            @endif
+                                            @if($order->status==0)
+                                            <td class="border px-4 py-2">
                                                 <form action="{{ route('admin.nextStatus', $order->id) }}" method="POST">
                                                     @csrf
                                                     @method('patch')
-                                                    <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded">Next</button>
+                                                    <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded">Update</button>
                                                 </form>
                                             </td>
+                                            @endif
+                                            @if($order->status==1)
+                                            <td class="border px-4 py-2">
+                                                    <button class="bg-green-500 text-white px-2 py-1 rounded">Complete</button>
+                                            </td>
+                                            @endif
                                         </tr>
                                     @endforeach
                                 </tbody>
