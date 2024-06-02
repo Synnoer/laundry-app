@@ -15,4 +15,5 @@ class Membership_Type extends Model
         'session',
         'service'
     ];
+    protected $table = 'membership_types';
 }

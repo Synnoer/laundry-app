@@ -33,7 +33,7 @@
         
         <div class="my-8">
             <p class="text-gray-700">Total Weight: <span id="total-weight">0</span> grams</p>
-            <p id="weight-warning" class="text-red-500 hidden">The total weight of the order must not exceed 3kg.</p>
+            <p id="weight-warning" class="text-red-500 hidden">The total weight of the order exceeds 3kg, additional charges will be applied.</p>
         </div>
 
         <div class="next-button text-center">
@@ -48,7 +48,7 @@
             let quantityElement = document.getElementById('quantity-' + productId);
             let inputElement = document.getElementById('input-quantity-' + productId);
             let quantity = parseInt(quantityElement.textContent) + delta;
-            if (quantity < 1) quantity = 1;
+            if (quantity < 0) quantity = 0; // Prevent quantity from going below 0
             quantityElement.textContent = quantity;
             inputElement.value = quantity;
             updateTotalWeight();
@@ -56,9 +56,10 @@
 
         function updateTotalWeight() {
             let totalWeight = 0;
-            document.querySelectorAll('[id^="input-quantity-"]').forEach(input => {
-                let weight = parseInt(input.previousElementSibling.previousElementSibling.textContent);
-                totalWeight += weight * parseInt(input.value);
+            document.querySelectorAll('.product-container').forEach(container => {
+                let weight = parseInt(container.querySelector('.weight').textContent);
+                let quantity = parseInt(container.querySelector('.quantity').textContent);
+                totalWeight += weight * quantity;
             });
             document.getElementById('total-weight').textContent = totalWeight;
 
@@ -73,8 +74,7 @@
         function validateWeight() {
             let totalWeight = parseInt(document.getElementById('total-weight').textContent);
             if (totalWeight > 3000) {
-                alert('The total weight of the order must not exceed 3kg.');
-                return false;
+                alert('The total weight of the order exceeds 3kg, additional charges will be applied.');
             }
             return true;
         }

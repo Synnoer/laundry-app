@@ -2,36 +2,59 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\View\View;
 use App\Models\User;
 use App\Models\Order;
-use App\Models\Membership;
+use App\Models\Membership_Type;
 
 class AdminController extends Controller
 {
     public function home()
     {
-        $users = User::with(['role'])->get();
-        $orders = Order::with(['user'])->get();
-        $memberships = Membership::with('membershipType')->get();
+        return view('/admin/home');
+    }
 
-        return view('/admin/admin', compact('users', 'orders', 'memberships'));
+    public function userlist()
+    {
+        $users = User::with(['role', 'membership.membershiptype'])->get();
+        $membership_types = Membership_Type::all();
+        
+        return view('/admin/userlist', compact('users', 'membership_types'));
     }
 
     public function updateMembership(Request $request)
     {
-        $request->validate([
-            'user_id' => 'required|exists:users,id',
-            'membership_id' => 'required|exists:memberships,id',
-        ]);
+    $request->validate([
+        'membership_id' => 'required|exists:membership_types,id',
+    ]);
+    
+    $user = User::findOrFail($request->input('user_id'));
+    $membership = $user->membership;
+    
+    if ($membership) {
+        $membership->membership_type_id = $request->input('membership_id');
+        $membership->save();
 
-        $user = User::findOrFail($request->user_id);
-        $user->membership_id = $request->membership_id;
-        $user->save();
-
-        return redirect()->route('admin.home')->with('success', 'Membership updated successfully');
+        return response()->json(['message' => 'Membership updated successfully!'], 200);
     }
+
+    return response()->json(['message' => 'Membership not found'], 404);
+    }
+
+
+    public function orderlist()
+    {
+        $users = User::with(['role', 'membership.membershiptype'])->get();
+        $orders = Order::all();
+        foreach ($orders as $order) {
+            $order->product_details = json_decode($order->product_details, true);
+        }    
+        return view("/admin/orderlist", compact('users', 'orders'));
+    }
+
+    public function editdatabase()
+    {
+        return view("/admin/editdatabase");
+    }
+
 }

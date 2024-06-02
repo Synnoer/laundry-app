@@ -52,12 +52,21 @@
             <div class="w-full flex flex-col justify-center">
                 <div class="flex-initial">
                     <p class="font-semibold text-xl text-gray-200 dark:text-gray-800 leading-tight">
-                        {{ __('Ahmad Noer Husaeni') }}
+                        {{ (Auth::user()->name) }}
                     </p>
                 </div>
                 <div class="flex-initial">
                     <p class="font-semibold text-xs text-gray-200 dark:text-gray-800 leading-tight">
-                        {{ __('08784872xxxx') }}
+                        {{ (Auth::user()->phone) }}
+                    </p>
+                </div>
+                <div class="flex-initial">
+                    <p class="font-semibold text-xs text-gray-200 dark:text-gray-800 leading-tight">
+                        @if (Auth::user()->membership && Auth::user()->membership->membershipType)
+                            {{ Auth::user()->membership->membershipType->type_name }}
+                        @else
+                            Error!
+                        @endif
                     </p>
                 </div>
             </div>
