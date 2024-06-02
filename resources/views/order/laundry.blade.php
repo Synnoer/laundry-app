@@ -65,6 +65,12 @@
         </form>
     </div>
 
+    @if (session('error'))
+    <script>
+        alert('{{ session('error') }}');
+    </script>
+    @endif
+
     <script>
         function setOrderDate(date) {
             document.getElementById('order_date').value = date;
