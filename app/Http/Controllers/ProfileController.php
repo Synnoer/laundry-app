@@ -14,10 +14,9 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-
-     public function review(Request $request): View
+    public function review(Request $request): View
     {
-        return view('profile.view', [
+        return view('profile.review', [
             'user' => $request->user(),
         ]);
     }
