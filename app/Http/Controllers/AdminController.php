@@ -45,7 +45,10 @@ class AdminController extends Controller
     public function orderlist()
     {
         $users = User::with(['role', 'membership.membershiptype'])->get();
-        $orders = Order::with(['user', 'product_details'])->get();
+        $orders = Order::all();
+        foreach ($orders as $order) {
+            $order->product_details = json_decode($order->product_details, true);
+        }    
         return view("/admin/orderlist", compact('users', 'orders'));
     }
 

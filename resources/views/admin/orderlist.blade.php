@@ -26,9 +26,9 @@
                                             <td class="border px-4 py-2">{{ $order->user->name }}</td>
                                             <td class="border px-4 py-2">
                                                 <ul>
-                                                    @foreach ($order->product_details as $product)
-                                                        <li>{{ $product['name'] }} ({{ $product['quantity'] }})</li>
-                                                    @endforeach
+                                                @foreach($order->product_details as $detail)
+                                                    {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
+                                                @endforeach
                                                 </ul>
                                             </td>
                                             <td class="border px-4 py-2">{{ $order->total_weight }} g</td>

@@ -11,7 +11,7 @@
         </div>
     </x-slot>
 
-    <main">
+    <main>
         <!-- Product Containers -->
             <div class="product-container">
                 <img src="/image/shirt.png" alt="Shirt" class="product-image">
