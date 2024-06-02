@@ -56,6 +56,7 @@ class OrderController extends Controller
             'products.*.weight' => 'required|numeric',
             'products.*.quantity' => 'required|integer|min:0',
             'products.*.image' => 'required|string',
+            
         ]);
 
         $totalWeight = array_sum(array_map(function($product) {

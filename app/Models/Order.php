@@ -16,7 +16,8 @@ class Order extends Model
         'fragrance',
         'order_date',
         'completion_estimation_date',
-        'user_id'
+        'user_id',
+        'status'
     ];
 
     protected $casts = [
