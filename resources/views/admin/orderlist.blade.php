@@ -16,6 +16,7 @@
                                         <th class="px-4 py-2">Total Weight</th>
                                         <th class="px-4 py-2">Service</th>
                                         <th class="px-4 py-2">Fragrance</th>
+                                        <th class="px-4 py-2">Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,6 +35,14 @@
                                             <td class="border px-4 py-2">{{ $order->total_weight }} g</td>
                                             <td class="border px-4 py-2">{{ $order->service }}</td>
                                             <td class="border px-4 py-2">{{ $order->fragrance }}</td>
+                                            <td class="border px-4 py-2">{{ $order->status }}</td>
+                                            <td class="px-4 py-2">
+                                                <form action="{{ route('admin.nextStatus', $order->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('patch')
+                                                    <button type="submit" class="bg-blue-500 text-white px-2 py-1 rounded">Next</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

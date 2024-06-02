@@ -42,6 +42,13 @@
                                                     <button type="submit" class="ml-2 bg-blue-500 text-white px-2 py-1 rounded">Update</button>
                                                 </form>
                                             </td>
+                                            <td class="px-4 py-2">
+                                                <form action="{{ route('admin.deleteUser', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
