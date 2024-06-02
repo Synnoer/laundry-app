@@ -24,4 +24,9 @@ class Order extends Model
         'order_date' => 'datetime',
         'completion_estimation_date' => 'datetime',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
