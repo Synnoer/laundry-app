@@ -14,7 +14,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        // Redirect to home page or show 403 forbidden if the user is not an admin
         return redirect('/home/dashboard');
     }
 }
