@@ -38,69 +38,120 @@
             </div>
         </div>
 
-
-<div class="w-full flex overflow-x-scroll snap-x snap-mandatory px-4 py-12">
-    <div class="snap-always snap-center mx-4 min-w-[300px] max-w-[300px]">
-        {{-- Session --}}
-        <div class="my-8" id="Session">
-            <div class=" rounded-lg shadow-md p-6 h-full" style="background-image: url('/image/BG-Slide-1.png'); background-size: cover; background-position: center;">
-                <h3 class="text-xl font-bold text-white dark:text-white mb-4">Session</h3>
-                <div class="bg-white rounded-lg p-4">
-                    <p class="text-sm text-black text-center">Session left:</p>
-                    <p class="border px-4 py-2 mt-2 text-center">
-                        {{ Auth::user()->membership->session_left ?? 'No session available' }}
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="snap-always snap-center mx-4 min-w-[300px] max-w-[300px]">
-        {{-- Membership Status --}}
-        <div class="my-8" id="Membership">
-            <div class=" rounded-lg shadow-md p-6 h-full" style="background-image: url('/image/BG-Slide-2.png'); background-size: cover; background-position: center;">
-                <h3 class="text-xl font-bold text-white dark:text-white mb-4">Membership Status</h3>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-white rounded-lg p-4">
-                        <p class="text-sm text-black">Started from:</p>
-                        <p class="border px-4 py-2 mt-2">
-                            {{ Auth::user()->membership->join_date ?? 'No service available' }}
-                        </p>
-                    </div>
-                    <div class="bg-white rounded-lg p-4">
-                        <p class="text-sm text-black">Ends:</p>
-                        <p class="border px-4 py-2 mt-2">
-                            {{ Auth::user()->membership->end_date ?? 'No service available' }}
-                        </p>
+        <div class="w-full flex overflow-x-scroll snap-x snap-mandatory px-4 py-12">
+            <div class="snap-always snap-center mx-4 min-w-[300px] max-w-[300px]">
+                {{-- Session --}}
+                <div class="my-8" id="Session">
+                    <div class=" rounded-lg shadow-md p-6 h-full" style="background-image: url('/image/BG-Slide-1.png'); background-size: cover; background-position: center;">
+                        <h3 class="text-xl font-bold text-white dark:text-white mb-4">Session</h3>
+                        <div class="bg-white rounded-lg p-4">
+                            <p class="text-sm text-black text-center">Session left:</p>
+                            <p class="border px-4 py-2 mt-2 text-center">
+                                {{ Auth::user()->membership->session_left ?? 'No session available' }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="snap-always snap-center mx-4 min-w-[300px] max-w-[300px]">
-        {{-- Charges --}}
-        <div class="my-8" id="Charges">
-            <div class=" rounded-lg shadow-md p-6 h-full" style="background-image: url('/image/BG-Slide-3.png'); background-size: cover; background-position: center;">
-                <h3 class="text-xl font-bold text-white dark:text-white mb-4">Charges</h3>
-                <div class="bg-white rounded-lg p-4">
-                    <p class="text-sm text-black text-center">Unpaid Charges:</p>
-                    <p class="border px-4 py-2 mt-2 text-center">
-                        {{ Auth::user()->membership->unpaid_charges ?? 'No charges available' }}
-                    </p>
+            <div class="snap-always snap-center mx-4 min-w-[300px] max-w-[300px]">
+                {{-- Membership Status --}}
+                <div class="my-8" id="Membership">
+                    <div class=" rounded-lg shadow-md p-6 h-full" style="background-image: url('/image/BG-Slide-2.png'); background-size: cover; background-position: center;">
+                        <h3 class="text-xl font-bold text-white dark:text-white mb-4">Membership Status</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg p-4">
+                                <p class="text-sm text-black">Started from:</p>
+                                <p class="border px-4 py-2 mt-2">
+                                    {{ Auth::user()->membership->join_date ?? 'No service available' }}
+                                </p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4">
+                                <p class="text-sm text-black">Ends:</p>
+                                <p class="border px-4 py-2 mt-2">
+                                    {{ Auth::user()->membership->end_date ?? 'No service available' }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="snap-always snap-center mx-4 min-w-[300px] max-w-[300px]">
+                {{-- Charges --}}
+                <div class="my-8" id="Charges">
+                    <div class=" rounded-lg shadow-md p-6 h-full" style="background-image: url('/image/BG-Slide-3.png'); background-size: cover; background-position: center;">
+                        <h3 class="text-xl font-bold text-white dark:text-white mb-4">Charges</h3>
+                        <div class="bg-white rounded-lg p-4">
+                            <p class="text-sm text-black text-center">Unpaid Charges:</p>
+                            <p class="border px-4 py-2 mt-2 text-center">
+                                {{ Auth::user()->membership->unpaid_charges ?? 'No charges available' }}
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
-
-
     </x-slot>
 
     <main class="p-6 ">
+<<<<<<< HEAD
+        @if ($errors->any())
+        <script>
+            alert('{{ $errors->first() }}');
+        </script>
+        @endif
         <div>
+            <h1 class="text-black text-left mb-6 ">Ongoing Order</h1>
+            @if($ongoingOrders->isNotEmpty())
+                <div class="w-full border-solid border-2  rounded-md border-black bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
+                    @foreach($ongoingOrders as $order)
+                        <div>
+                            <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+                        </div>
+                        <div>
+                            <h3 class="border-black px-4 py-2 text-center">
+                                @foreach($order->product_details as $detail)
+                                    {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
+                                @endforeach
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2">
+                                <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
+                                <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+        <div class="mb-6 mt-6">
+            <h1 class="text-black text-left mb-6">Recent Order</h1>
+            <!-- ganti -->
+            @if($ongoingOrders->isNotEmpty())
+                <div class="w-full border-solid border-2  rounded-md border-black bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
+                    @foreach($ongoingOrders as $order)
+                        <div>
+                            <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+                        </div>
+                        <div>
+                            <h3 class="border-black px-4 py-2 text-center">
+                                @foreach($order->product_details as $detail)
+                                    {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
+                                @endforeach
+                            </h3>
+                            <div class="grid grid-cols-2 gap-2">
+                                <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
+                                <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+=======
+    <div>
+        <div class="mb-6 mt-6">
         <h1 class="text-black text-left mb-6 ">Ongoing Order</h1>
-        @if($ongoingOrders->isNotEmpty())
-        <div >
+    </div>
+    @if($ongoingOrders->isNotEmpty())
         <div class="w-full border-solid border-2 rounded-md border-black bg-white sm:rounded-lg px-4 py-2 flex justify-center w-75">
                 @foreach($ongoingOrders as $order)
                     <div>
@@ -120,20 +171,18 @@
                 @endforeach
             </div>
         </div>
-            
         @endif
-        </div>
-        <div class="mb-6 mt-6">
-        <h1 class="text-black text-left mb-6">Recent Order</h1>
+        <div>     
+        <h1 class="text-black text-left mt-6 mb-6">Recent Order</h1></div>
+        @if($recentOrders->isNotEmpty())
         <!-- ganti -->
-        @if($ongoingOrders->isNotEmpty())
             <div class="w-full border-solid border-2  rounded-md border-black bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
-                @foreach($ongoingOrders as $order)
+                @foreach($recentOrders as $order)
                     <div>
                         <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
                     </div>
                     <div>
-                        <h3 class="border-black px-4 py-2 text-center">
+                        <h3 class="border-black py-2 text-center">
                             @foreach($order->product_details as $detail)
                                 {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
                             @endforeach
@@ -146,28 +195,7 @@
                 @endforeach
             </div>
         @endif
-        </div>
-        <div class="mb-24">
-        @if($ongoingOrders->isNotEmpty())
-            <div class="w-full border-solid border-2 rounded-md border-black bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
-                @foreach($ongoingOrders as $order)
-                    <div>
-                        <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
-                    </div>
-                    <div>
-                        <h3 class="border-black px-4 py-2 text-center">
-                            @foreach($order->product_details as $detail)
-                                {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
-                            @endforeach
-                        </h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
-                            <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        @endif
-        </div>
+    </div>
+>>>>>>> c12c226ada1381c8bb9888c8bde1519d9a1ea340
     </main>    
 </x-app-layout>

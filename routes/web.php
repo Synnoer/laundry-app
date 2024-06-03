@@ -15,11 +15,13 @@ Route::get('/dashboard', function () {
     return view('home/dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'home'])->name('admin.home');
     Route::get('/admin/userlist', [AdminController::class, 'userlist'])->name('admin.userlist');
     Route::patch('/admin/updatemembership', [AdminController::class, 'updateMembership'])->name('admin.updateMembership');
+    Route::delete('/admin/deleteuser/{user}', [AdminController::class, 'deleteUser'])->name('admin.deleteUser');
     Route::get('/admin/orderlist', [AdminController::class, 'orderlist'])->name('admin.orderlist');
+    Route::patch('/admin/nextstatus/{order}', [AdminController::class, 'nextStatus'])->name('admin.nextStatus');
     Route::get('/admin/editdatabase', [AdminController::class, 'editdatabase'])->name('admin.editdatabase');
 });
 
