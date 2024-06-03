@@ -6,17 +6,17 @@ use Carbon\Carbon;
 
 class DateHelper 
 { 
-    public static function getNextTuesdayAndThursday()
+    public static function getNextMondayAndThursday()
     {
         $dates = [];
         $today = Carbon::today();
 
-        // Add next Tuesday
-        $nextTuesday = $today->next(Carbon::TUESDAY);
-        if ($today->isTuesday()) {
-            $nextTuesday = $today;
+        // Add next Monday
+        $nextMonday = $today->next(Carbon::MONDAY);
+        if ($today->isMonday()) {
+            $nextMonday = $today;
         }
-        $dates[] = $nextTuesday->toDateString();
+        $dates[] = $nextMonday->toDateString();
 
         // Add next Thursday
         $nextThursday = $today->next(Carbon::THURSDAY);

@@ -15,7 +15,7 @@ class OrderController extends Controller
 {
     public function index(): View
     {
-        $order_dates = DateHelper::getNextTuesdayAndThursday();
+        $order_dates = DateHelper::getNextMondayAndThursday();
         $fragrances = Fragrance::all();
         $users = User::with('membership.membershiptype')->get();
         $memberships = Membership::with('membershiptype')->get();
