@@ -10,18 +10,6 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <style>
-            h1 {
-                font-size: 1.5rem; /* Base font size */
-                margin-left: 3rem; /* Base margin */
-            }
-
-            @media screen and (max-width: 768px) {
-                h1 {
-                    font-size: 1rem; /* Adjust font size for smaller screens */
-                    margin-left: 1.5rem; /* Adjust margin for smaller screens */
-                }
-            }
-
             main {
                 min-height: calc(100vh - 3.5rem); /* Adjust for header height */
                 display: flex;
@@ -36,31 +24,37 @@
             }
         </style>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-white dark:bg-gray-200">
-            <!-- Page Heading -->
-            <header class="bg-sky-900 dark:bg-blue-900 shadow">
-                <div class="w-full mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <img src="/image/logo-white.png" alt="Logo" class="w-13 h-12 mr-4">
-                            <a href="/admin" class="text-2xl font-semibold text-white">Admin Page</a>
+    <body class="bg-gray-100">
+        <div class="flex">
+            <!-- Sidebar -->
+            <div class="w-64 bg-blue-950 text-white h-screen">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <img src="/image/logo-white.png" alt="Logo" class="w-13 h-12 mr-4 items-center">
+                        <div class="p-4">
+                            <h2 class="text-2xl font-bold">Admin Dashboard</h2>
                         </div>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <x-dropdown-link :href="route('logout')"
-                                onclick="event.preventDefault(); this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
                     </div>
                 </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
+                <ul>
+                    <li class="px-4 py-2"><a href="{{ route('admin.home') }}">Home</a></li>
+                    <li class="px-4 py-2"><a href="{{ route('admin.userlist') }}">User List</a></li>
+                    <li class="px-4 py-2"><a href="{{ route('admin.orderlist') }}">Order List</a></li>
+                    <li class="px-4 py-2"><a href="{{ route('admin.editdatabase') }}">Edit Database</a></li>
+                    
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <x-dropdown-link :href="route('logout')"
+                            onclick="event.preventDefault(); this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
+                </ul>
+            </div>
+            <!-- Main Content -->
+            <div class="flex-1 p-6">
                 {{ $slot }}
-            </main>
+            </div>
         </div>
     </body>
 </html>
