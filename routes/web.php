@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard',[DashboardController::class, 'home'])->name('dashboard');
-    Route::get('/ongoing',[DashboardController::class, 'ongoing'])->name('ongoing');
+    Route::get('/ongoing/{order}',[DashboardController::class, 'ongoing'])->name('ongoing');
     Route::get('/notification', [DashboardController::class, 'notification'])->name('notification');
     Route::get('/about', [DashboardController::class, 'about'])->name('about');
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
@@ -38,9 +38,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/member/silver', [MembershipController::class, 'silver'])->name('membership.silver');
     Route::get('/member/gold', [MembershipController::class, 'gold'])->name('membership.gold');
     Route::get('/member/platinum', [MembershipController::class, 'platinum'])->name('membership.platinum');
-    Route::get('/profile/review', [ProfileController::class, 'review'])->name('profile.review');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'review'])->name('profile.review');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

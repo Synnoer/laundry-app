@@ -62,7 +62,7 @@
                 </div>
             </x-nav-link>
 
-            <x-nav-link class="w-fit" :href="route('profile.edit')" :active="request()->routeIs('profile.edit')" iconSrc="/image/Icon-Account-Grey.png">
+            <x-nav-link class="w-fit" :href="route('profile.review')" :active="request()->routeIs('profile.review')" iconSrc="/image/Icon-Account-Grey.png">
                 <div class="nav-item w-full">
                     <span class="nav-label">{{ __('Account') }}</span>
                 </div>

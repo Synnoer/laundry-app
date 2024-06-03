@@ -53,13 +53,19 @@ class AdminController extends Controller
         $membership = $user->membership;
         
         if ($membership) {
+            $membershipType = Membership_Type::findOrFail($request->input('membership_id'));
             $membership->membership_type_id = $request->input('membership_id');
+            $membership->join_date = now();
+            $membership->end_date = now()->addDays($membershipType->durations);
+            $membership->session_left = $membershipType->session;
             $membership->save();
 
-            return response()->json(['message' => 'Membership updated successfully!'], 200);
+            session()->flash('success', 'Membership updated successfully!');
+        } else {
+            session()->flash('error', 'Membership not found.');
         }
 
-        return response()->json(['message' => 'Membership not found'], 404);
+        return redirect()->route('admin.userlist');
     }
 
     public function deleteUser(User $user)
