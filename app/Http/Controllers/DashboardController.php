@@ -29,9 +29,9 @@ class DashboardController extends Controller
         }  
         return view("home.dashboard", compact('ongoingOrders', 'recentOrders'));
     }
-    public function ongoing()
+    public function ongoing(Order $order)
     {
-        $Orders = Order::where('order_id')->get();
+        $order = Order::where('id', request()->get('id'))->count();
         return view('home/ongoing-laundry');
     }
 
