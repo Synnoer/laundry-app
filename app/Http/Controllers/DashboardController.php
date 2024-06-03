@@ -15,14 +15,14 @@ class DashboardController extends Controller
         // Fetch only the ongoing orders for the logged-in user
         $ongoingOrders = Order::where('user_id', auth()->id())
                             ->where('completion_estimation_date', '>=', now())
-                            ->where('status', '!=', '1')
+                            ->where('status', '<', '7')
                             ->get();
         foreach ($ongoingOrders as $order) {
             $order->product_details = json_decode($order->product_details, true);
         }               
         
         $recentOrders = Order::where('user_id', auth()->id())
-                            ->where('status', '1')
+                            ->where('status', '7')
                             ->get();
         foreach ($recentOrders as $order) {
             $order->product_details = json_decode($order->product_details, true);
@@ -31,6 +31,7 @@ class DashboardController extends Controller
     }
     public function ongoing()
     {
+        $Orders = Order::where('order_id')->get();
         return view('home/ongoing-laundry');
     }
 

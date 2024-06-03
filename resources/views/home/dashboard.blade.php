@@ -100,8 +100,10 @@
     @if($ongoingOrders->isNotEmpty())
         <div class="w-full border-solid border-2 rounded-md border-black bg-white sm:rounded-lg px-4 py-2 flex justify-center w-75">
                 @foreach($ongoingOrders as $order)
-                    <div>
+                    <div><form action="{{ route('ongoing', $order->id) }}" method="POST"></form>
+                        <button type="submit">
                         <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+                        <button>
                     </div>
                     <div>
                         <h3 class="border-black px-4 py-2 text-center">
