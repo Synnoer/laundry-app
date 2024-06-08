@@ -86,7 +86,9 @@ class AdminController extends Controller
         $orders = Order::all();
         foreach ($orders as $order) {
             $order->product_details = json_decode($order->product_details, true);
-        }              
+            session()->flash('success', 'Membership updated successfully!');
+        }
+                      
         return view("/admin/orderlist", compact('users', 'orders'));
     }
 

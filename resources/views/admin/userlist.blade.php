@@ -53,6 +53,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            @if (session('success'))
+                                    <script>
+                                        alert('{{ session('success') }}');
+                                    </script>
+                            @endif
                         </div>
                     </center>
                 </div>
