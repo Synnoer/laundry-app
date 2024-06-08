@@ -48,6 +48,10 @@ class OrderController extends Controller
 
     public function detail(Request $request): View
     {
+        $user = auth()->user();
+        $membership = $user->membership;
+        $service = $user->membership->membershiptype->service;
+        
         $validatedData = $request->validate([
             'order_date' => 'required|date',
             'fragrance' => 'required|string',
@@ -66,7 +70,7 @@ class OrderController extends Controller
         $order = [
             'products' => $validatedData['products'],
             'total_weight' => $totalWeight,
-            'service' => 'Laundry Service',
+            'service' => $service,
             'fragrance' => $validatedData['fragrance'],
             'order_date' => $validatedData['order_date'],
             'completion_estimation_date' => now()->addDays(2)->toDateString(),

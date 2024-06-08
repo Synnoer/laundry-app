@@ -21,7 +21,7 @@
                         </button>
                     </x-slot>
                     <x-slot name="content">
-                        <x-dropdown-link href="https://wa.me/+6289670169478?text=Help">
+                        <x-dropdown-link href="https://wa.me/+6285722842019?text=Help">
                             {{ __('Contact') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('about')">
