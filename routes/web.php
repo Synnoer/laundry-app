@@ -11,9 +11,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('home/dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'home'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'home'])->name('admin.home');
@@ -26,7 +26,6 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard',[DashboardController::class, 'home'])->name('dashboard');
     Route::get('/ongoing/{order}',[DashboardController::class, 'ongoing'])->name('ongoing');
     Route::get('/notification', [DashboardController::class, 'notification'])->name('notification');
     Route::get('/about', [DashboardController::class, 'about'])->name('about');
