@@ -65,12 +65,32 @@
             <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex justify-center mt-6">
+
+            <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')
             <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="text-sm text-gray-600 dark:text-gray-400">{{ __('Saved.') }}</p>
             @endif
         </div>
+        
     </form>
+       
+</section>
+
+<div class="mt-6 flex justify-start">
+    <a href="{{ route('profile.editpw') }}" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
+        Edit Password
+    </a>
+</div>
+
+<section>
+    <div class="mt-6 flex justify-start">
+        <x-danger-button
+            x-data=""
+            x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+            >{{ __('Delete Account') }}
+        </x-danger-button>
+    </div>
 </section>
