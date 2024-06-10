@@ -3,14 +3,16 @@
         <h1 class="font-semibold text-white">Make an Order</h1>
     </x-slot>
 
-    <form method="GET" action="{{ route('order.checkout') }}" id="order-form">
-        @csrf
-        <input type="hidden" name="order_date" value="{{ request('order_date') }}">
-        <input type="hidden" name="fragrance" value="{{ request('fragrance') }}">
-        
-        <div class="my-8 flex flex-col justify-center items-center space-y-10">
-            <div class="bg-white dark:bg-gray-300 rounded-lg shadow-md p-4">
-                @foreach ($products as $product)
+    <main class="flex flex-col justify-between h-full">
+        <form method="GET" action="{{ route('order.checkout') }}" id="order-form">
+            @csrf
+            <input type="hidden" name="order_date" value="{{ request('order_date') }}">
+            <input type="hidden" name="fragrance" value="{{ request('fragrance') }}">
+
+
+            <div class="my-8 flex flex-col justify-center items-center space-y-10">
+                <div class="bg-white dark:bg-gray-300 rounded-lg shadow-md p-4">
+                    @foreach ($products as $product)
                     <div class="product-container">
                         <img src="{{ asset('image/' . $product['image']) }}" alt="{{ $product['name'] }}" class="product-image">
                         <div class="product-details">
@@ -27,21 +29,22 @@
                         <input type="hidden" name="products[{{ $product['id'] }}][quantity]" id="input-quantity-{{ $product['id'] }}" value="0">
                         <input type="hidden" name="products[{{ $product['id'] }}][image]" value="{{ $product['image'] }}">
                     </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
-        </div>
-        
-        <div class="my-8">
-            <p class="text-gray-700">Total Weight: <span id="total-weight">0</span> grams</p>
-            <p id="weight-warning" class="text-red-500 hidden">The total weight of the order exceeds 3kg, additional charges will be applied.</p>
-        </div>
 
-        <div class="next-button text-center">
-            <button type="submit" class="inline-flex items-center px-6 py-2 bg-gray-800 dark:bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-black focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150" onclick="return validateWeight()">
-                {{ __('Next') }}
-            </button>
-        </div>
-    </form>
+            <div class="my-4">
+                <p class="text-gray-700">Total Weight: <span id="total-weight">0</span> grams</p>
+                <p id="weight-warning" class="text-red-500 hidden">The total weight of the order exceeds 3kg, additional charges will be applied.</p>
+            </div>
+
+            <div class="next-button text-center">
+                <button type="submit" class="inline-flex items-center px-6 py-2 bg-gray-800 dark:bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white dark:text-white uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-black focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150" onclick="return validateWeight()">
+                    {{ __('Next') }}
+                </button>
+            </div>
+        </form>
+    </main>
 
     <script>
         function updateQuantity(productId, delta) {

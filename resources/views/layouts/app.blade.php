@@ -106,13 +106,12 @@
             margin: 0 0.25rem;
             /* Add space between buttons */
         }
-        .header-bg {
-        background-image: url('/Image/BG-Home.png');
-        background-size: cover;
-        background-position: center;
-        }
 
-        
+        .header-bg {
+            background-image: url('/Image/BG-Home.png');
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
 
@@ -129,7 +128,7 @@
         @endif
 
         <!-- Page Content -->
-        <main class="bg-white">
+        <main class="bg-white relative">
             {{ $slot }}
         </main>
 
