@@ -10,7 +10,8 @@
         </div>
     </x-slot>
 
-    <div class="py-12">
+    <main class="flex flex-col justify-between h-full">
+    <div class="">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-gradient-to-r from-slate-400 to-slate-600 shadow sm:rounded-lg">
                 <div class="max-w-xl">
@@ -26,7 +27,7 @@
                 <li>Membership duration: 8 weeks</li>
                 <li>Total weight each session: 3 Kg</li>
                 <li>Total sessions: 16</li>
-                <li>Available Service: Dry cleaning + Fold + Ironing + Choosing Fragrance</li>
+                <li>Available Service: Dry cleaning + Fold + Ironing </li>
             </ul>
         </div>
         
@@ -36,4 +37,5 @@
             </a>
         </div>
     </div>
+    </main>
 </x-app-layout>
