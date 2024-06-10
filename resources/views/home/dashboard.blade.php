@@ -102,10 +102,9 @@
                 @foreach($ongoingOrders as $order)
                 <div class="w-full p-4 border rounded-lg shadow-lg mb-2 border-gray-200 bg-gray-100">
                     <div class="items-center">
-                        <form action="/ongoing/{{ $order->id }}" method="Patch">
                             <div class="flex">
                                 <div class="w-1/4 flex flex-col justify-center">
-                                    <button type="submit">
+                                    <a href="/ongoing/{{ $order->id }}">
                                         <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
                                     </button>
                                 </div>
@@ -121,7 +120,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
                 @endforeach
@@ -150,12 +148,9 @@
             </div>-->
                 <div class="w-full p-4 border rounded-lg shadow-lg mb-2 border-gray-200 bg-gray-100">
                     <div class="items-center">
-                        <form action="/ongoing/{{ $order->id }}" method="Patch">
                             <div class="flex">
                                 <div class="w-1/4 flex flex-col justify-center">
-                                    <button type="submit">
                                         <img src="/image/Logo-ongoing.png" class=" w-9 h-9">
-                                    </button>
                                 </div>
                                 <div class="w-3/4">
                                     <h3 class="border-black px-4 py-2 text-center">
@@ -169,7 +164,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
                 @endforeach

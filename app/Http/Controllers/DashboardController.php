@@ -36,8 +36,7 @@ class DashboardController extends Controller
     }
     public function ongoing(Order $order)
     {
-        $order = Order::where('id', request()->get('id'))->count();
-        return view('home/ongoing-laundry');
+        return view('home/ongoing-laundry', compact('order'));
     }
 
     public function notification()
