@@ -23,7 +23,7 @@
 
                 <!-- Choose Fragrance -->
                 <select id="fragrance_select" name="fragrance" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
-                    <option value="" disabled selected>{{ __('Select Date') }}</option>
+                    <option value="" disabled selected>{{ __('Select Fragrace') }}</option>
                     @foreach ($fragrances as $fragrance)
                     <option value="{{ $fragrance->fragrance_name }}" > {{ $fragrance->fragrance_name }} </option>
                     @endforeach 
