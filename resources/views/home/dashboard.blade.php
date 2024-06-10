@@ -83,7 +83,7 @@
                         <div class="bg-white rounded-lg p-4">
                             <p class="text-sm text-black text-center">Unpaid Charges:</p>
                             <p class="border px-4 py-2 mt-2 text-center">
-                                {{ Auth::user()->membership->unpaid_charges ?? 'No charges available' }}
+                                {{ Auth::user()->membership->unpaid_charges ?? 'Coming Soon' }}
                             </p>
                         </div>
                     </div>
@@ -92,59 +92,89 @@
         </div>
     </x-slot>
 
-    <main class="p-6 ">
-    <div>
-        <div class="mb-6 mt-6">
-        <h1 class="text-black text-left mb-6 ">Ongoing Order</h1>
-    </div>
-    @if($ongoingOrders->isNotEmpty())
-        <div class="w-full border-solid border-2 rounded-md border-black bg-white sm:rounded-lg px-4 py-2 flex justify-center w-75">
+    <main class="p-6 flex flex-col justify-between h-full">
+        <div class="">
+            <div class="mb-6 mt-6">
+                <p class="text-black text-2xl font-bold">Ongoing Order</p>
+            </div>
+            @if($ongoingOrders->isNotEmpty())
+            <div class="w-full border-solid bg-white sm:rounded-lg flex flex-col items-start">
                 @foreach($ongoingOrders as $order)
-                    <div>
+                <div class="w-full p-4 border rounded-lg shadow-lg mb-2 border-gray-200 bg-gray-100">
+                    <div class="items-center">
                         <form action="/ongoing/{{ $order->id }}" method="Patch">
-                        <button type="submit">
-                        <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
-                        <button>
+                            <div class="flex">
+                                <div class="w-1/4 flex flex-col justify-center">
+                                    <button type="submit">
+                                        <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+                                    </button>
+                                </div>
+                                <div class="w-3/4">
+                                    <h3 class="border-black px-4 py-2 text-center">
+                                        @foreach($order->product_details as $detail)
+                                        {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
+                                        @endforeach
+                                    </h3>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
+                                        <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
-                    <div>
-                        <h3 class="border-black px-4 py-2 text-center">
-                            @foreach($order->product_details as $detail)
-                                {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
-                            @endforeach
-                        </h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
-                            <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
-                        </div>
-                    </div>
+                </div>
                 @endforeach
             </div>
-        </div>
-        @endif
-        <div>     
-        <h1 class="text-black text-left mt-6 mb-6">Recent Order</h1></div>
-        @if($recentOrders->isNotEmpty())
-        <!-- ganti -->
-            <div class="w-full border-solid border-2  rounded-md border-black bg-white sm:rounded-lg px-4 py-2 grid grid-cols-2">
+            @endif
+
+            <div>
+                <p class="text-black text-2xl font-bold">Recent Order</p>
+            </div>
+            @if($recentOrders->isNotEmpty())
+            <div class="w-full border-solid bg-white sm:rounded-lg flex flex-col items-start">
                 @foreach($recentOrders as $order)
-                    <div>
-                        <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+                <!--<div>
+                <img src="/image/Logo-ongoing.png" class="object-center w-9 h-9">
+            </div>
+            <div>
+                <h3 class="border-black py-2 text-center">
+                    @foreach($order->product_details as $detail)
+                    {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
+                    @endforeach
+                </h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
+                    <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
+                </div>
+            </div>-->
+                <div class="w-full p-4 border rounded-lg shadow-lg mb-2 border-gray-200 bg-gray-100">
+                    <div class="items-center">
+                        <form action="/ongoing/{{ $order->id }}" method="Patch">
+                            <div class="flex">
+                                <div class="w-1/4 flex flex-col justify-center">
+                                    <button type="submit">
+                                        <img src="/image/Logo-ongoing.png" class=" w-9 h-9">
+                                    </button>
+                                </div>
+                                <div class="w-3/4">
+                                    <h3 class="border-black px-4 py-2 text-center">
+                                        @foreach($order->product_details as $detail)
+                                        {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
+                                        @endforeach
+                                    </h3>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
+                                        <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div>
-                        <h3 class="border-black py-2 text-center">
-                            @foreach($order->product_details as $detail)
-                                {{ $detail['name'] ?? 'Unknown product' }} x {{ $detail['quantity'] ?? 0 }},
-                            @endforeach
-                        </h3>
-                        <div class="grid grid-cols-2 gap-2">
-                            <p class="border-black px-4 py-2">Order : {{ $order->order_date->format('Y-m-d') ?? 'start' }}</p>
-                            <p class="border-black px-4 py-2">Estimate : {{ $order->completion_estimation_date->format('Y-m-d') ?? 'end' }}</p>
-                        </div>
-                    </div>
+                </div>
                 @endforeach
             </div>
-        @endif
-    </div>
+            @endif
+        </div>
     </main>    
 </x-app-layout>

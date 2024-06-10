@@ -9,8 +9,8 @@
             </button>
         </div>
     </x-slot>
-
-    <div class="py-12">
+<main class="flex flex-col justify-between h-full">
+    <div class="">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-gray-300 dark:bg-gray-400 shadow sm:rounded-lg">
                 <div class="max-w-xl">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 
     <div class="flex justify-center items-center h-full mt-8">
         <div class="flex flex-col justify-center items-center space-y-10">
@@ -42,4 +42,6 @@
             </button>
         </div>
     </div>
+</div>
+</main>
 </x-app-layout>
