@@ -3,63 +3,74 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="content p-6 bg-gray-100">
-                    <center>
-                        <h3 class="text-lg font-semibold mb-2">User Data</h3>
-                        <div class="mb-6">
-                            <table class="table-auto w-full">
-                                <thead>
+                    <h3 class="text-2xl font-semibold text-center mb-4">User Data</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white">
+                            <thead class="bg-blue-800 text-white">
+                                <tr>
+                                    <th class="px-4 py-2">Name</th>
+                                    <th class="px-4 py-2">Gender</th>
+                                    <th class="px-4 py-2">Address</th>
+                                    <th class="px-4 py-2">Phone</th>
+                                    <th class="px-4 py-2">Email</th>
+                                    <th class="px-4 py-2">Role</th>
+                                    <th class="px-4 py-2">Membership</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-gray-700">
+                                @foreach ($users as $user)
                                     <tr>
-                                        <th class="px-4 py-2">Name</th>
-                                        <th class="px-4 py-2">Gender</th>
-                                        <th class="px-4 py-2">Address</th>
-                                        <th class="px-4 py-2">Phone</th>
-                                        <th class="px-4 py-2">Email</th>
-                                        <th class="px-4 py-2">Role</th>
-                                        <th class="px-4 py-2">Membership</th>
+                                        <td class="border px-4 py-2">{{ $user->name }}</td>
+                                        <td class="border px-4 py-2">{{ $user->gender }}</td>
+                                        <td class="border px-4 py-2">{{ $user->address }}</td>
+                                        <td class="border px-4 py-2">{{ $user->phone }}</td>
+                                        <td class="border px-4 py-2">{{ $user->email }}</td>
+                                        <td class="border px-4 py-2">{{ $user->role->role_name }}</td>
+                                        <td class="border px-4 py-2">
+                                            <form action="{{ route('admin.updateMembership') }}" method="POST" class="membership-form">
+                                                @csrf
+                                                @method('patch')
+                                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                                <select name="membership_id" class="membership-select">
+                                                    @foreach ($membership_types as $membership_type)
+                                                        <option value="{{ $membership_type->id }}" {{ $user->membership && $user->membership->membership_type_id == $membership_type->id ? 'selected' : '' }}>
+                                                            {{ $membership_type->type_name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <button type="submit" class="ml-2 bg-blue-500 text-white px-2 py-1 rounded">Update</button>
+                                            </form>
+                                        </td>
+                                        <td class="px-4 py-2">
+                                            <form action="{{ route('admin.deleteUser', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+                                            </form>
+                                        </td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($users as $user)
-                                        <tr>
-                                            <td class="border px-4 py-2">{{ $user->name }}</td>
-                                            <td class="border px-4 py-2">{{ $user->gender }}</td>
-                                            <td class="border px-4 py-2">{{ $user->address }}</td>
-                                            <td class="border px-4 py-2">{{ $user->phone }}</td>
-                                            <td class="border px-4 py-2">{{ $user->email }}</td>
-                                            <td class="border px-4 py-2">{{ $user->role->role_name }}</td>
-                                            <td class="border px-4 py-2">
-                                                <form action="{{ route('admin.updateMembership') }}" method="POST" class="membership-form">
-                                                    @csrf
-                                                    @method('patch')
-                                                    <input type="hidden" name="user_id" value="{{ $user->id }}">
-                                                    <select name="membership_id" class="membership-select">
-                                                        @foreach ($membership_types as $membership_type)
-                                                            <option value="{{ $membership_type->id }}" {{ $user->membership && $user->membership->membership_type_id == $membership_type->id ? 'selected' : '' }}>
-                                                                {{ $membership_type->type_name }}
-                                                            </option>
-                                                        @endforeach
-                                                    </select>
-                                                    <button type="submit" class="ml-2 bg-blue-500 text-white px-2 py-1 rounded">Update</button>
-                                                </form>
-                                            </td>
-                                            <td class="px-4 py-2">
-                                                <form action="{{ route('admin.deleteUser', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?');">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    </center>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @if (session('success'))
+        <script>
+            alert('{{ session('success') }}');
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            alert('{{ session('error') }}');
+        </script>
+    @endif
 </x-admin-layout>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         let selects = document.querySelectorAll('.membership-select');

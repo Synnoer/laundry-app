@@ -78,10 +78,6 @@
                     </header>
 
                     <form class="mt-6 space-y-6">
-                        <div>
-                            <x-input-label for="name" :value="__('Name')" />
-                            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="$user->name" readonly />
-                        </div>
 
                         <div>
                             <x-input-label for="email" :value="__('Email')" />

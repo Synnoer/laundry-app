@@ -11,9 +11,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('home/dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', [DashboardController::class, 'home'])
+//     ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin', [AdminController::class, 'home'])->name('admin.home');
@@ -25,8 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/editdatabase', [AdminController::class, 'editdatabase'])->name('admin.editdatabase');
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/dashboard',[DashboardController::class, 'home'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'home'])->name('dashboard');
     Route::get('/ongoing/{order}',[DashboardController::class, 'ongoing'])->name('ongoing');
     Route::get('/notification', [DashboardController::class, 'notification'])->name('notification');
     Route::get('/about', [DashboardController::class, 'about'])->name('about');
@@ -41,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'review'])->name('profile.review');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/editpw',[ProfileController::class, 'editpw'])->name('profile.editpw');
+    Route::patch('/profile/updatepw',[ProfileController::class, 'updatepw'])->name('profile.updatepw');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

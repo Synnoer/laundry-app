@@ -19,14 +19,19 @@ class DashboardController extends Controller
                             ->get();
         foreach ($ongoingOrders as $order) {
             $order->product_details = json_decode($order->product_details, true);
-        }               
+        }
+        
+        logger()->debug('Ongoing Orders:', $ongoingOrders->toArray());
         
         $recentOrders = Order::where('user_id', auth()->id())
                             ->where('status', '7')
                             ->get();
         foreach ($recentOrders as $order) {
             $order->product_details = json_decode($order->product_details, true);
-        }  
+        }
+        
+        logger()->debug('Recent Orders:', $recentOrders->toArray());
+
         return view("home.dashboard", compact('ongoingOrders', 'recentOrders'));
     }
     public function ongoing(Order $order)

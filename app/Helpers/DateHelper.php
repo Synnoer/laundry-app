@@ -6,23 +6,31 @@ use Carbon\Carbon;
 
 class DateHelper 
 { 
-    public static function getNextTuesdayAndThursday()
+    public static function getNextMondayAndThursday()
     {
         $dates = [];
         $today = Carbon::today();
 
-        // Add next Tuesday
-        $nextTuesday = $today->next(Carbon::TUESDAY);
-        if ($today->isTuesday()) {
-            $nextTuesday = $today;
+        // Calculate next Monday
+        if ($today->isMonday()) {
+            $nextMonday = $today;
+        } elseif ($today->isAfter($today->copy()->startOfWeek())) {
+            $nextMonday = $today->copy()->startOfWeek()->addWeek();
+        } else {
+            $nextMonday = $today->copy()->startOfWeek();
         }
-        $dates[] = $nextTuesday->toDateString();
 
-        // Add next Thursday
-        $nextThursday = $today->next(Carbon::THURSDAY);
+        // Calculate next Thursday
         if ($today->isThursday()) {
             $nextThursday = $today;
+        } elseif ($today->isAfter($today->copy()->startOfWeek()->addDays(3))) {
+            $nextThursday = $today->copy()->startOfWeek()->addDays(3)->addWeek();
+        } else {
+            $nextThursday = $today->copy()->startOfWeek()->addDays(3);
         }
+
+        // Add dates to array
+        $dates[] = $nextMonday->toDateString();
         $dates[] = $nextThursday->toDateString();
 
         return $dates;

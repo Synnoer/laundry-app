@@ -17,7 +17,11 @@
 
         <!-- Gender -->
         <div class="mt-4">
-            <x-text-input id="gender" class="block mt-1 w-full" type="text" name="gender" :value="old('gender')" required autocomplete="gender" placeholder="{{ __('Gender') }}" />
+            <select id="gender" name="gender" class="block mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+                <option value="" disabled selected>{{ __('Select Gender') }}</option>
+                <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>{{ __('Male') }}</option>
+                <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>{{ __('Female') }}</option>
+            </select>
             <x-input-error :messages="$errors->get('gender')" class="mt-2" />
         </div>
 

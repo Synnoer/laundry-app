@@ -31,6 +31,7 @@
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 
+    <div class="flex justify-center mt-6">
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
@@ -44,5 +45,6 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
+    </div>
     </form>
 </section>
