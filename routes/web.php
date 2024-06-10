@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'home'])->name('dashboard');
     Route::get('/ongoing/{order}',[DashboardController::class, 'ongoing'])->name('ongoing');
+    Route::delete('/ongoing/cancelorder/{order}', [DashboardController::class, 'cancelOrder'])->name('cancelOrder');
     Route::get('/notification', [DashboardController::class, 'notification'])->name('notification');
     Route::get('/about', [DashboardController::class, 'about'])->name('about');
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');

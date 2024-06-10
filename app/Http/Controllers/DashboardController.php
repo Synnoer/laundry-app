@@ -39,6 +39,12 @@ class DashboardController extends Controller
         return view('home/ongoing-laundry', compact('order'));
     }
 
+    public function cancelOrder(Order $order)
+    {
+        $order->delete();
+        return redirect()->route('dashboard')->with('success', 'Order Cancelled.');
+    }
+
     public function notification()
     {
         return view('home/notification');

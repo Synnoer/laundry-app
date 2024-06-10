@@ -67,10 +67,14 @@
 
         @if($order->status==0)
         <div class="flex justify-center">
+        <form action="{{ route('cancelOrder', $order->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to cancel this order?');">
+            @csrf
+            @method('delete')
             <button class=" px-2 py-1 bg-red-400 text-black-700 rounded-md shadow-md mt-7">
                 <span class="text-white">{{ __('Cancel Order') }}</span>
             </button>
         </div>
+        </form>
         @elseif($order->status!=0)
         <div class="flex justify-center">
             <button class=" px-2 py-1 bg-red-200 text-black-700 rounded-md shadow-md mt-7 disable">
