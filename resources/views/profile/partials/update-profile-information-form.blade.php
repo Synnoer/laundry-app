@@ -7,6 +7,8 @@
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __("Update your account's profile information and email address.") }}
         </p>
+
+    </div>
     </header>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
@@ -17,6 +19,13 @@
         @csrf
         @method('patch')
 
+        <div class="flex items-center space-x-6">
+            <img id="profileImage" src="{{ $user->profile_photo_url }}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
+            <input type="file" name="profile_photo" id="profile_photo" accept="image/*" onchange="previewImage(event)" class="hidden">
+            <label for="profile_photo" class="cursor-pointer bg-blue-500 text-white py-2 px-4 rounded">
+                Choose Photo
+            </label>
+        </div>
         <div>
             <x-input-label for="name" :value="__('Name')" />
             <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
@@ -65,7 +74,7 @@
             <x-input-error class="mt-2" :messages="$errors->get('address')" />
         </div>
 
-        <div class="flex justify-center mt-6">
+        <div class="flex flex-col items-center mt-6">
 
             <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
@@ -75,22 +84,31 @@
             @endif
         </div>
         
+    
+            <div class="flex justify-start mt-6 space-x-4">
+                <a href="{{ route('profile.editpw') }}" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
+                    Edit Password
+                </a>
+            </div>
+
+            <div class="flex justify-start mt-6 space-x-4">
+                    <x-danger-button
+                        x-data=""
+                        x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+                        >{{ __('Delete Account') }}
+                    </x-danger-button>
+            </div> 
     </form>
-       
+      
 </section>
 
-<div class="mt-6 flex justify-start">
-    <a href="{{ route('profile.editpw') }}" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
-        Edit Password
-    </a>
-</div>
-
-<section>
-    <div class="mt-6 flex justify-start">
-        <x-danger-button
-            x-data=""
-            x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-            >{{ __('Delete Account') }}
-        </x-danger-button>
-    </div>
-</section>
+<script>
+    function previewImage(event) {
+        var reader = new FileReader();
+        reader.onload = function(){
+            var output = document.getElementById('profileImage');
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>

@@ -39,22 +39,22 @@
         <div class="flex justify-center w-75">
             <div class="w-fit">
                 <button class="w-auto text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                    <img src="/Image/Foto.png" alt="Foto" class="fill-current object-contain w-32">
+                    <img src="{{ Auth::user()->profile_photo_url }}" alt="Foto" class="fill-current object-contain w-32 rounded-full">
                 </button>
             </div>
             <div class="w-full flex flex-col justify-center">
                 <div class="flex-initial">
-                    <p class="font-semibold text-xl text-gray-200 dark:text-gray-800 leading-tight">
+                    <p class="font-semibold text-xl text-white text-xl leading-tight">
                         {{ (Auth::user()->name) }}
                     </p>
                 </div>
                 <div class="flex-initial">
-                    <p class="font-semibold text-xs text-gray-200 dark:text-gray-800 leading-tight">
+                    <p class="font-semibold text-xs text-white leading-tight">
                         {{ (Auth::user()->phone) }}
                     </p>
                 </div>
                 <div class="flex-initial">
-                    <p class="font-semibold text-xs text-gray-200 dark:text-gray-800 leading-tight">
+                    <p class="font-semibold text-xs text-white leading-tight">
                         @if (Auth::user()->membership && Auth::user()->membership->membershipType)
                             {{ Auth::user()->membership->membershipType->type_name }}
                         @else
@@ -67,31 +67,45 @@
 
     </x-slot>
 
-    <div class="w-screen px-4">
+    <div class="w-screen px-4 mt-6">
         <div class="w-full mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <section>
-                    <header>
-                        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
-                            {{ __('Profile Information') }}
-                        </h2>
-                    </header>
-
-                    <form class="mt-6 space-y-6">
-
-                        <div>
-                            <x-input-label for="email" :value="__('Email')" />
-                            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="$user->email" readonly />
+                    <div class="space-y-6">
+                        <h2> Email </h2>
+                        <div class=" flex items-center gap-4 border border-black p-2">
+                            <div class="w-1/4">
+                                <img src="/image/email.png" class="object-center w-9 h-9">
+                            </div>
+                            <div class="w-3/4">
+                                <p class="font-semibold text-xl text-gray-200 dark:text-gray-800 leading-tight">
+                                    {{ (Auth::user()->email) }}
+                                </p>
+                            </div>
                         </div>
-
-                        <div>
-                            <x-input-label for="gender" :value="__('Gender')" />
-                            <x-text-input id="gender" name="gender" type="text" class="mt-1 block w-full" :value="$user->gender" readonly />
+                    <div class="space-y-6 mt-4">
+                        <h2> Gender </h2>
+                        <div class="flex items-center gap-4 border border-black p-2">
+                            <div class="w-1/4">
+                                <img src="/image/icon-male.png" class="object-center w-9 h-9">
+                            </div>
+                            <div class="w-3/4">
+                                <p class="font-semibold text-xl text-gray-200 dark:text-gray-800 leading-tight">
+                                    {{ (Auth::user()->gender) }}
+                                </p>
+                            </div>
                         </div>
-
-                        <div>
-                            <x-input-label for="address" :value="__('Address')" />
-                            <x-text-input id="address" name="address" type="text" class="mt-1 block w-full" :value="$user->address" readonly />
+                    <div class="space-y-6 mt-4">
+                        <h2> Address </h2>
+                        <div class=" flex items-center gap-4 border border-black p-2">
+                            <div class="w-1/4">
+                                <img src="/image/address.png" class="object-center w-9 h-9">
+                            </div>
+                            <div class="w-3/4">
+                                <p class="font-semibold text-xl text-gray-200 dark:text-gray-800 leading-tight ">
+                                    {{ (Auth::user()->address) }}
+                                </p>
+                            </div>
                         </div>
 
                         <div class="flex justify-center mt-6">
@@ -99,7 +113,7 @@
                                 Edit Profile
                             </a>
                         </div>
-                    </form>
+                    </div>
                 </section>
             </div>
         </div>
