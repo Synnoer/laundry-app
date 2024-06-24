@@ -39,7 +39,7 @@
         <div class="flex justify-center w-75">
             <div class="w-fit">
                 <button class="w-auto text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none">
-                    <img src="{{ Auth::user()->profile_photo_url }}" alt="Foto" class="fill-current object-contain w-32 rounded-full">
+                    <img src="{{ Auth::user()->avatar_url }}" alt="Foto" class="fill-current object-contain w-32 rounded-full">
                 </button>
             </div>
             <div class="w-full flex flex-col justify-center">

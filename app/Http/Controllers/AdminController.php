@@ -88,7 +88,6 @@ class AdminController extends Controller
             $order->product_details = json_decode($order->product_details, true);
             session()->flash('success', 'Membership updated successfully!');
         }
-                      
         return view("/admin/orderlist", compact('users', 'orders'));
     }
 

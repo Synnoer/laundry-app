@@ -15,13 +15,13 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
         <div class="flex items-center space-x-6">
             <img id="profileImage" src="{{ $user->profile_photo_url }}" alt="Profile Photo" class="w-32 h-32 rounded-full object-cover">
-            <input type="file" name="profile_photo" id="profile_photo" accept="image/*" onchange="previewImage(event)" class="hidden">
+            <input id="profile_photo" type="file" name="profile_photo" accept="image/*" onchange="previewImage(event)" class="hidden">
             <label for="profile_photo" class="cursor-pointer bg-blue-500 text-white py-2 px-4 rounded">
                 Choose Photo
             </label>

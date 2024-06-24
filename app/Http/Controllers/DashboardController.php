@@ -34,6 +34,7 @@ class DashboardController extends Controller
 
         return view("home.dashboard", compact('ongoingOrders', 'recentOrders'));
     }
+    
     public function ongoing(Order $order)
     {
         return view('home/ongoing-laundry', compact('order'));
