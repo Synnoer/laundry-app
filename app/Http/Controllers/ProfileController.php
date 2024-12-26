@@ -44,7 +44,7 @@ class ProfileController extends Controller
         // Handle profile photo upload
         if ($request->hasFile('profile_photo')) {
             $imagePath = $request->file('profile_photo')->store('profile_photos', 'public');
-            $user->avatar_url = $imagePath;
+            $user->avatar_url = 'storage/' . $imagePath;
         }
         
         $request->user()->save();

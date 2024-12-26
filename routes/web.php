@@ -47,4 +47,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/offline', function () {
+    return view('modules/laravelpwa/offline');
+});
+
 require __DIR__.'/auth.php';

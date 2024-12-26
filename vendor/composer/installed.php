@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8f581090b1541cf10f8420c6c8164d11510d6669',
+        'reference' => 'bea73d3d96a40cc674125c330f7700dc8b449914',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -409,7 +409,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8f581090b1541cf10f8420c6c8164d11510d6669',
+            'reference' => 'bea73d3d96a40cc674125c330f7700dc8b449914',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -1074,6 +1074,15 @@
             'install_path' => __DIR__ . '/../sebastian/version',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'silviolleite/laravelpwa' => array(
+            'pretty_version' => '2.0.3',
+            'version' => '2.0.3.0',
+            'reference' => '5f7135d2ee870af01793c9fdf6b1b932b546e20e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../silviolleite/laravelpwa',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'spatie/backtrace' => array(
             'pretty_version' => '1.6.1',

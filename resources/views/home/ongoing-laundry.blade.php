@@ -1,8 +1,7 @@
 <x-app-layout>
-    </style>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <button onclick="window.history.back()" class="flex items-center px-4 py-2 font-semibold text-xl text-white leading-tight">
+            <button onclick="window.history.back()" class="flex items-center px-4 py-2 font-semibold text-xl text-white bg-blue-500 hover:bg-blue-700 rounded-md shadow-md">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -11,78 +10,49 @@
         </div>
     </x-slot>
 
-    <main">
-        <!-- Product Containers -->
-        <div class="product-container ">
-            <img src="/image/shirt.png" alt="Shirt" class="product-image">
-            <div class="product-details">
-                <p class="description">Total Weight</p>
-                <p class="quantity">{{$order->total_weight}} gram</p>
-                <p>Order date</p>
-                <p>{{$order->order_date->format('Y-m-d') ?? 'end'}}</p>
-                <p>Estimated completion</p>
-                <p>{{$order->completion_estimation_date->format('Y-m-d') ?? 'end'}}</p>
+    <main class="py-8 px-4 bg-gray-50">
+        <!-- Product Container -->
+        <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex items-center space-x-6">
+                <img src="/image/shirt.png" alt="Shirt" class="w-32 h-32 object-cover rounded-lg shadow-md">
+                <div class="text-gray-700">
+                    <h3 class="text-2xl font-semibold mb-2">Order Details</h3>
+                    <p><strong>Total Weight:</strong> {{$order->total_weight}} gram</p>
+                    <p><strong>Order Date:</strong> {{$order->order_date->format('Y-m-d') ?? 'N/A'}}</p>
+                    <p><strong>Estimated Completion:</strong> {{$order->completion_estimation_date->format('Y-m-d') ?? 'N/A'}}</p>
+                </div>
             </div>
         </div>
 
-        <div class="flex items-center justify-center px-2 py-0.5 text-xl italic mb-2 text-bold">
-            <h3>Order Status</h3>
+        <!-- Order Status -->
+        <div class="mt-6 max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4 text-center">Order Status</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <x-green-label :active="$order->status == 0">{{ __('Awaiting Pickup') }}</x-green-label>
+                <x-green-label :active="$order->status == 1">{{ __('Order Picked Up') }}</x-green-label>
+                <x-green-label :active="$order->status == 2">{{ __('Order Arrives at Laundry') }}</x-green-label>
+                <x-green-label :active="$order->status == 3">{{ __('Order is Being Washed') }}</x-green-label>
+                <x-green-label :active="$order->status == 4">{{ __('Order Finished Washing') }}</x-green-label>
+                <x-green-label :active="$order->status == 5">{{ __('Order Delivered to Destination') }}</x-green-label>
+                <x-green-label :active="$order->status == 6">{{ __('Order Arrives at Destination') }}</x-green-label>
+            </div>
         </div>
-        <!-- Total Pieces -->
-        @if($order->status==0)
-        <x-green-label>{{ __('Awaiting Pickup') }}</x-green-label>
-        @elseif($order->status!=0)
-        <x-status-label>{{ __('Awaiting Pickup') }}</x-status-label>
-        @endif
-        @if($order->status==1)
-        <x-green-label>{{ __('Order picked up') }}</x-green-label>
-        @elseif($order->status!=1)
-        <x-status-label>{{ __('Order picked up') }}</x-status-label>
-        @endif
-        @if($order->status==2)
-        <x-green-label>{{ __('Order arrives at the laudry') }}</x-green-label>
-        @elseif($order->status!=2)
-        <x-status-label>{{ __('Order arrives at the laudry') }}</x-status-label>
-        @endif
-        @if($order->status==3)
-        <x-green-label>{{ __('Order is being washed') }}</x-green-label>
-        @elseif($order->status!=3)
-        <x-status-label>{{ __('Order is being washed') }}</x-status-label>
-        @endif
-        @if($order->status==4)
-        <x-green-label>{{ __('Order finished washing') }}</x-green-label>
-        @elseif($order->status!=4)
-        <x-status-label>{{ __('Order finished washing') }}</x-status-label>
-        @endif
-        @if($order->status==5)
-        <x-green-label>{{ __('Order delivered to destination') }}</x-green-label>
-        @elseif($order->status!=5)
-        <x-status-label>{{ __('Order delivered to destination') }}</x-status-label>
-        @endif
-        @if($order->status==6)
-        <x-green-label>{{ __('Order arrives at destination') }}</x-green-label>
-        @elseif($order->status!=6)
-        <x-status-label>{{ __('Order arrives at destination') }}</x-status-label>
-        @endif
 
-        @if($order->status==0)
-        <div class="flex justify-center">
-        <form action="{{ route('cancelOrder', $order->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to cancel this order?');">
-            @csrf
-            @method('delete')
-            <button class=" px-2 py-1 bg-red-400 text-black-700 rounded-md shadow-md mt-7">
-                <span class="text-white">{{ __('Cancel Order') }}</span>
-            </button>
+        <!-- Cancel Order -->
+        <div class="mt-6 max-w-4xl mx-auto text-center">
+            @if($order->status == 0)
+                <form action="{{ route('cancelOrder', $order->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to cancel this order?');">
+                    @csrf
+                    @method('delete')
+                    <button class="px-4 py-2 bg-red-500 text-white font-semibold rounded-md shadow-md hover:bg-red-600">
+                        {{ __('Cancel Order') }}
+                    </button>
+                </form>
+            @else
+                <button class="px-4 py-2 bg-gray-300 text-gray-600 font-semibold rounded-md shadow-md cursor-not-allowed">
+                    {{ __('Cancel Order') }}
+                </button>
+            @endif
         </div>
-        </form>
-        @elseif($order->status!=0)
-        <div class="flex justify-center">
-            <button class=" px-2 py-1 bg-red-200 text-black-700 rounded-md shadow-md mt-7 disable">
-                <span class="text-white">{{ __('Cancel Order') }}</span>
-            </button>
-        </div>
-        @endif
-
-
-        </main>
+    </main>
 </x-app-layout>

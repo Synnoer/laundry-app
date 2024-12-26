@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Fragrance;
 use App\Models\Membership;
 use App\Helpers\DateHelper;
+use App\Notifications\LaundryOrderNotification;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -129,10 +130,7 @@ class OrderController extends Controller
             'order_date' => $validatedData['order_date'],
             'completion_estimation_date' => $validatedData['completion_estimation_date'],
             'user_id' => $validatedData['user_id'],
-        ]);
-
-        
-
+        ]);        
         return redirect()->route('dashboard')->with('success', 'Order created successfully.');
     }
 }

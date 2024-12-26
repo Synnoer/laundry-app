@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @laravelPWA
     <style>
         h1 {
             font-size: 1.5rem;
@@ -121,7 +122,7 @@
         <!-- Page Heading -->
         @if (isset($header))
         <header class="header-bg shadow">
-            <div class="w-full mx-auto ">
+            <div class="w-full ">
                 {{ $header }}
             </div>
         </header>
@@ -133,7 +134,7 @@
         </main>
 
 
-        <footer>
+        <footer>    
             <div class="w-full">
                 @include('layouts.navigation')
             </div>

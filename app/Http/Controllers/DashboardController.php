@@ -48,7 +48,8 @@ class DashboardController extends Controller
 
     public function notification()
     {
-        return view('home/notification');
+        $notifications = auth()->user()->notifications()->orderBy('created_at', 'desc')->get();
+        return view('home.notification', compact('notifications'));
     }
     public function about()
     {

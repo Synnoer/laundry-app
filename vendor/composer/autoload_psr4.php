@@ -74,6 +74,7 @@ return array(
     'Laravel\\Sail\\' => array($vendorDir . '/laravel/sail/src'),
     'Laravel\\Prompts\\' => array($vendorDir . '/laravel/prompts/src'),
     'Laravel\\Breeze\\' => array($vendorDir . '/laravel/breeze/src'),
+    'LaravelPWA\\' => array($vendorDir . '/silviolleite/laravelpwa'),
     'Illuminate\\Support\\' => array($vendorDir . '/laravel/framework/src/Illuminate/Macroable', $vendorDir . '/laravel/framework/src/Illuminate/Collections', $vendorDir . '/laravel/framework/src/Illuminate/Conditionable'),
     'Illuminate\\' => array($vendorDir . '/laravel/framework/src/Illuminate'),
     'Http\\Promise\\' => array($vendorDir . '/php-http/promise/src'),

@@ -139,6 +139,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
             'Laravel\\Sail\\' => 13,
             'Laravel\\Prompts\\' => 16,
             'Laravel\\Breeze\\' => 15,
+            'LaravelPWA\\' => 11,
         ),
         'I' => 
         array (
@@ -473,6 +474,10 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         array (
             0 => __DIR__ . '/..' . '/laravel/breeze/src',
         ),
+        'LaravelPWA\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/silviolleite/laravelpwa',
+        ),
         'Illuminate\\Support\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
@@ -601,6 +606,8 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\HandleOverdueOrders' => __DIR__ . '/../..' . '/app/Console/Commands/HandleOverdueOrders.php',
+        'App\\Helpers\\DateHelper' => __DIR__ . '/../..' . '/app/Helpers/DateHelper.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
@@ -621,6 +628,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Http\\Requests\\ProfileUpdateRequest' => __DIR__ . '/../..' . '/app/Http/Requests/ProfileUpdateRequest.php',
         'App\\Mail\\EmailVerification' => __DIR__ . '/../..' . '/app/Mail/EmailVerification.php',
+        'App\\Mail\\ResetPasswordNotification' => __DIR__ . '/../..' . '/app/Mail/ResetPasswordNotification.php',
         'App\\Models\\Fragrance' => __DIR__ . '/../..' . '/app/Models/Fragrance.php',
         'App\\Models\\Membership' => __DIR__ . '/../..' . '/app/Models/Membership.php',
         'App\\Models\\Membership_Type' => __DIR__ . '/../..' . '/app/Models/Membership_Type.php',
@@ -628,6 +636,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Models\\Role' => __DIR__ . '/../..' . '/app/Models/Role.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Notifications\\LaundryOrderNotification' => __DIR__ . '/../..' . '/app/Notifications/LaundryOrderNotification.php',
+        'App\\Notifications\\ResetPasswordNotification' => __DIR__ . '/../..' . '/app/Notifications/ResetPasswordNotification.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\View\\Components\\AdminLayout' => __DIR__ . '/../..' . '/app/View/Components/AdminLayout.php',
         'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/app/View/Components/AppLayout.php',
@@ -759,8 +768,13 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'Cron\\HoursField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/HoursField.php',
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
+        'Database\\Factories\\MembershipFactory' => __DIR__ . '/../..' . '/database/factories/MembershipFactory.php',
+        'Database\\Factories\\RoleFactory' => __DIR__ . '/../..' . '/database/factories/RoleFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\Fragrance' => __DIR__ . '/../..' . '/database/seeders/Fragrance.php',
+        'Database\\Seeders\\Membership' => __DIR__ . '/../..' . '/database/seeders/Membership.php',
+        'Database\\Seeders\\Role' => __DIR__ . '/../..' . '/database/seeders/Role.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -3045,6 +3059,11 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'Illuminate\\View\\ViewFinderInterface' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewFinderInterface.php',
         'Illuminate\\View\\ViewName' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewName.php',
         'Illuminate\\View\\ViewServiceProvider' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/View/ViewServiceProvider.php',
+        'LaravelPWA\\Http\\Controllers\\LaravelPWAController' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Http/Controllers/LaravelPWAController.php',
+        'LaravelPWA\\Providers\\LaravelPWAServiceProvider' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Providers/LaravelPWAServiceProvider.php',
+        'LaravelPWA\\Providers\\RouteServiceProvider' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Providers/RouteServiceProvider.php',
+        'LaravelPWA\\Services\\ManifestService' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Services/ManifestService.php',
+        'LaravelPWA\\Services\\MetaService' => __DIR__ . '/..' . '/silviolleite/laravelpwa/Services/MetaService.php',
         'Laravel\\Breeze\\BreezeServiceProvider' => __DIR__ . '/..' . '/laravel/breeze/src/BreezeServiceProvider.php',
         'Laravel\\Breeze\\Console\\InstallCommand' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallCommand.php',
         'Laravel\\Breeze\\Console\\InstallsApiStack' => __DIR__ . '/..' . '/laravel/breeze/src/Console/InstallsApiStack.php',
